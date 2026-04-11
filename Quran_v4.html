@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Al-Quran — The Noble Book</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Nunito:wght@300;400;500;600&family=Anek+Malayalam:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌙</text></svg>">
+<style>
+:root {
+  --bg: #0a0c0f;
+  --bg2: #0f1117;
+  --bg3: #141820;
+  --gold: #c9a84c;
+  --gold2: #e8c97a;
+  --gold3: #f5e0a0;
+  --green: #2e7d5e;
+  --green2: #3a9e78;
+  --text: #e8e0d0;
+  --muted: #8a8070;
+  --border: rgba(201,168,76,0.15);
+  --border2: rgba(201,168,76,0.3);
+  --ff-arabic: 'Amiri', serif;
+  --ff-display: 'Cormorant Garamond', serif;
+  --ff-body: 'Nunito', sans-serif;
+}
+[data-theme="light"] {
+  --bg: #faf8f3;
+  --bg2: #f0ece0;
+  --bg3: #e8e2d0;
+  --gold: #a07830;
+  --gold2: #8a6420;
+  --gold3: #6b4e18;
+  --green: #1e5e42;
+  --green2: #256b4c;
+  --text: #1a1610;
+  --muted: #6b6050;
+  --border: rgba(160,120,48,0.2);
+  --border2: rgba(160,120,48,0.4);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-body);overflow-x:hidden;}
+
+/* PATTERN BG */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(201,168,76,0.08) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, rgba(201,168,76,0.015) 0px, rgba(201,168,76,0.015) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(-45deg, rgba(201,168,76,0.015) 0px, rgba(201,168,76,0.015) 1px, transparent 1px, transparent 40px);
+}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;
+  background:rgba(10,12,15,0.92);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+  transition:background 0.3s;
+}
+[data-theme="light"] nav{background:rgba(250,248,243,0.95);}
+
+/* ── LIGHT THEME OVERRIDES ── */
+[data-theme="light"] body{background:#faf8f3;}
+
+[data-theme="light"] body::before{
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(160,120,48,0.07) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, rgba(160,120,48,0.025) 0px, rgba(160,120,48,0.025) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(-45deg, rgba(160,120,48,0.025) 0px, rgba(160,120,48,0.025) 1px, transparent 1px, transparent 40px);
+}
+
+[data-theme="light"] .hero-arabic{
+  text-shadow: 0 0 40px rgba(160,120,48,0.2);
+}
+[data-theme="light"] .hero h1{color:#1a1610;}
+
+[data-theme="light"] .search-box{
+  background:#f0ece0;
+  box-shadow: 0 2px 12px rgba(160,120,48,0.08);
+}
+[data-theme="light"] .search-box:focus-within{
+  box-shadow: 0 0 20px rgba(160,120,48,0.15);
+}
+[data-theme="light"] .search-btn{
+  color:#faf8f3;
+  background:#a07830;
+}
+[data-theme="light"] .search-btn:hover{background:#8a6420;}
+
+[data-theme="light"] .modal-overlay{background:rgba(20,16,8,0.7);}
+[data-theme="light"] .modal{
+  background:#f0ece0;
+  box-shadow: 0 20px 60px rgba(100,70,20,0.2);
+}
+[data-theme="light"] .arabic-text{
+  background:#e8e2d0;
+  border-color:rgba(160,120,48,0.25);
+}
+
+[data-theme="light"] .ayah-card{
+  background:#f0ece0;
+  box-shadow: 0 2px 8px rgba(160,120,48,0.08);
+}
+[data-theme="light"] .ayah-card:hover{
+  box-shadow: 0 6px 20px rgba(160,120,48,0.15);
+}
+
+[data-theme="light"] .spec-item{
+  background:#f0ece0;
+  box-shadow: 0 1px 6px rgba(160,120,48,0.07);
+}
+
+[data-theme="light"] #specialities{
+  background:#e8e2d0 !important;
+}
+
+[data-theme="light"] .conclusion{
+  background:linear-gradient(180deg, transparent, rgba(160,120,48,0.05));
+}
+[data-theme="light"] .conclusion-arabic{
+  text-shadow: 0 0 40px rgba(160,120,48,0.15);
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track{background:#f0ece0;}
+[data-theme="light"] ::-webkit-scrollbar-thumb{background:rgba(160,120,48,0.35);border-radius:3px;}
+
+/* smooth transitions for theme switch */
+body, nav, .ayah-card, .spec-item, .modal, .search-box, .search-btn, footer, .conclusion, #specialities{
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-logo{
+  font-family:var(--ff-arabic);font-size:22px;color:var(--gold);
+  display:flex;align-items:center;gap:12px;
+}
+.nav-logo span{font-family:var(--ff-display);font-size:15px;color:var(--muted);font-weight:300;letter-spacing:2px;text-transform:uppercase;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+
+/* HERO */
+.hero{
+  position:relative;z-index:1;
+  text-align:center;
+  padding:80px 20px 60px;
+  border-bottom:1px solid var(--border);
+}
+.hero-arabic{
+  font-family:var(--ff-arabic);font-size:clamp(32px,6vw,58px);
+  color:var(--gold2);line-height:1.6;margin-bottom:8px;
+  text-shadow:0 0 40px rgba(201,168,76,0.3);
+}
+.hero-sub{
+  font-family:var(--ff-display);font-size:clamp(13px,2vw,16px);
+  color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:32px;
+  font-style:italic;
+}
+.hero h1{
+  font-family:var(--ff-display);font-size:clamp(36px,7vw,72px);font-weight:300;
+  color:var(--text);line-height:1.1;margin-bottom:14px;letter-spacing:-1px;
+}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-desc{font-size:15px;color:var(--muted);max-width:480px;margin:0 auto 48px;line-height:1.8;}
+.divider-ornament{
+  font-family:var(--ff-arabic);font-size:28px;color:var(--gold);opacity:0.4;
+  margin:20px 0;display:block;
+}
+
+/* SEARCH */
+.search-section{
+  position:relative;z-index:1;
+  max-width:680px;margin:0 auto;
+  padding:0 20px 60px;
+}
+.search-label{
+  font-family:var(--ff-display);font-size:13px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);text-align:center;margin-bottom:16px;font-style:italic;
+}
+.search-box{
+  display:flex;gap:0;
+  border:1px solid var(--border2);border-radius:4px;overflow:hidden;
+  background:var(--bg2);
+  transition:border-color 0.3s;box-shadow:0 0 0 0 rgba(201,168,76,0);
+}
+.search-box:focus-within{border-color:var(--gold);box-shadow:0 0 24px rgba(201,168,76,0.1);}
+.search-input{
+  flex:1;background:transparent;border:none;outline:none;
+  padding:16px 20px;font-family:var(--ff-body);font-size:15px;color:var(--text);
+}
+.search-input::placeholder{color:var(--muted);}
+.search-btn{
+  padding:0 28px;background:var(--gold);border:none;cursor:pointer;
+  font-family:var(--ff-display);font-size:15px;color:#0a0c0f;font-weight:600;
+  letter-spacing:1px;transition:background 0.2s;white-space:nowrap;
+}
+.search-btn:hover{background:var(--gold2);}
+.search-hint{font-size:12px;color:var(--muted);text-align:center;margin-top:10px;}
+.search-hint code{background:var(--bg3);padding:2px 8px;border-radius:3px;font-size:11px;color:var(--gold);border:1px solid var(--border);}
+
+/* MODAL */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.modal-overlay.active{display:flex;animation:fadeIn 0.25s ease;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.modal{
+  background:var(--bg2);border:1px solid var(--border2);border-radius:8px;
+  max-width:680px;width:100%;max-height:90vh;overflow-y:auto;
+  animation:slideUp 0.3s ease;position:relative;
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.modal-header{
+  padding:24px 28px 20px;border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+}
+.modal-ref{
+  font-family:var(--ff-display);font-size:13px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);font-style:italic;
+}
+.modal-surah{font-family:var(--ff-display);font-size:22px;font-weight:500;color:var(--text);margin-top:4px;}
+.modal-close{
+  background:none;border:1px solid var(--border);color:var(--muted);
+  width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:18px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.2s;
+}
+.modal-close:hover{border-color:var(--gold);color:var(--gold);}
+.modal-body{padding:28px;}
+.arabic-text{
+  font-family:var(--ff-arabic);font-size:clamp(24px,4vw,36px);
+  color:var(--gold2);text-align:right;line-height:2;direction:rtl;
+  margin-bottom:28px;padding:20px;
+  background:var(--bg3);border-radius:6px;border:1px solid var(--border);
+}
+.translation-block{margin-bottom:20px;}
+.trans-label{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;font-weight:500;
+  display:flex;align-items:center;gap:8px;
+}
+.trans-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.trans-flag{font-size:14px;}
+.trans-text{
+  font-family:var(--ff-display);font-size:18px;font-weight:400;
+  color:var(--text);line-height:1.8;
+}
+.trans-text.ml{font-size:17px;line-height:2;font-family:'Anek Malayalam',sans-serif;}
+.modal-loading{text-align:center;padding:40px;color:var(--muted);}
+.spinner-gold{
+  width:32px;height:32px;border:2px solid var(--border2);
+  border-top-color:var(--gold);border-radius:50%;
+  animation:spin 0.8s linear infinite;margin:0 auto 12px;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.error-box{
+  background:rgba(180,60,60,0.1);border:1px solid rgba(180,60,60,0.3);
+  border-radius:6px;padding:16px 20px;color:#e07070;font-size:14px;text-align:center;
+}
+
+/* SECTIONS */
+.section{position:relative;z-index:1;padding:80px 40px;max-width:1100px;margin:0 auto; border-radius: 24px; border: #e8c97a  6px;}
+.section-ornament{
+  display:flex;align-items:center;gap:16px;margin-bottom:40px;
+}
+.section-ornament::before,.section-ornament::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,var(--border2),transparent);
+}
+.section-title{
+  font-family:var(--ff-display);font-size:clamp(26px,4vw,40px);font-weight:300;
+  color:var(--text);letter-spacing:-0.5px;white-space:nowrap;
+}
+.section-title em{font-style:italic;color:var(--gold);}
+
+/* POPULAR AYAHS */
+.ayahs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;}
+.ayah-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:6px;
+  padding:24px;transition:all 0.3s;cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.ayah-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--green2));
+  transform:scaleX(0);transform-origin:left;transition:transform 0.3s;
+}
+.ayah-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.ayah-card:hover::before{transform:scaleX(1);}
+.ayah-arabic{
+  font-family:var(--ff-arabic);font-size:20px;color:var(--gold2);
+  text-align:right;direction:rtl;line-height:1.8;margin-bottom:16px;
+}
+.ayah-ref{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);font-weight:500;margin-bottom:8px;font-family:var(--ff-display);font-style:italic;
+}
+.ayah-english{font-size:14px;color:var(--muted);line-height:1.7;font-family:var(--ff-display);font-style:italic;font-size:15px;}
+.ayah-number{
+  position:absolute;bottom:16px;right:20px;
+  font-family:var(--ff-arabic);font-size:22px;color:var(--border2);
+}
+
+/* SPECIALITIES */
+.spec-intro{
+  font-family:var(--ff-display);font-size:17px;color:var(--muted);
+  line-height:1.9;max-width:700px;margin:0 auto 48px;text-align:center;font-style:italic;
+}
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-bottom:40px;}
+.spec-item{
+  background:var(--bg2);border:1px solid var(--border);border-radius:6px;
+  padding:18px 20px;display:flex;gap:16px;align-items:flex-start;
+  transition:border-color 0.2s;
+}
+.spec-item:hover{border-color:var(--border2);}
+.spec-num{
+  font-family:var(--ff-arabic);font-size:26px;color:var(--gold);
+  opacity:0.5;flex-shrink:0;line-height:1;margin-top:2px;min-width:32px;
+}
+.spec-text{font-size:14px;color:var(--muted);line-height:1.7;}
+.spec-text strong{color:var(--text);font-weight:600;display:block;margin-bottom:3px;font-size:14px;}
+
+/* CONCLUSION */
+.conclusion{
+  position:relative;z-index:1;
+  text-align:center;
+  padding:80px 40px;
+  border-top:1px solid var(--border);
+  background:linear-gradient(180deg, transparent, rgba(201,168,76,0.03));
+}
+.conclusion-arabic{
+  font-family:var(--ff-arabic);font-size:clamp(28px,5vw,48px);
+  color:var(--gold2);margin-bottom:12px;text-shadow:0 0 40px rgba(201,168,76,0.2);
+}
+.conclusion-trans{font-family:var(--ff-display);font-size:16px;color:var(--muted);font-style:italic;margin-bottom:32px;}
+.conclusion-text{
+  font-family:var(--ff-display);font-size:clamp(16px,2.5vw,20px);font-weight:300;
+  color:var(--text);line-height:1.9;max-width:700px;margin:0 auto 32px;
+}
+.conclusion-text em{color:var(--gold);font-style:italic;}
+.conclusion-seal{font-family:var(--ff-arabic);font-size:40px;color:var(--gold);opacity:0.3;margin-top:24px;}
+
+/* FOOTER */
+footer{
+  text-align:center;padding:24px 40px;
+  border-top:1px solid var(--border);font-size:12px;color:var(--muted);
+  letter-spacing:1px;
+  display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;
+}
+.theme-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--bg2);border:1px solid var(--border2);
+  color:var(--gold);border-radius:20px;
+  padding:7px 16px;font-size:12px;letter-spacing:1px;
+  font-family:var(--ff-body);text-transform:uppercase;cursor:pointer;
+  transition:all 0.3s;user-select:none;
+}
+.theme-btn:hover{background:var(--border);border-color:var(--gold);}
+.theme-icon{font-size:14px;transition:transform 0.4s;}
+.theme-btn:hover .theme-icon{transform:rotate(20deg);}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  nav{padding:12px 20px;}
+  .nav-links{display:none;}
+  .section{padding:60px 20px;}
+  .hero{padding:60px 20px 40px;}
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
+
+/* ═══════════════════════════════════════════
+   ASMA UL-HUSNA — 99 NAMES SECTION
+═══════════════════════════════════════════ */
+#asma{
+  position:relative;z-index:1;
+  padding:80px 40px;
+  border-top:1px solid var(--border);
+  max-width:1200px;margin:0 auto;
+}
+.asma-intro{
+  font-family:var(--ff-display);font-size:16px;color:var(--muted);
+  line-height:1.9;max-width:640px;margin:0 auto 20px;text-align:center;font-style:italic;
+}
+
+/* Filter bar */
+.asma-filter{
+  display:flex;align-items:center;gap:10px;
+  max-width:480px;margin:0 auto 48px;
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:4px;overflow:hidden;
+  transition:border-color 0.3s;
+}
+.asma-filter:focus-within{border-color:var(--gold);box-shadow:0 0 20px rgba(201,168,76,0.1);}
+.asma-filter-input{
+  flex:1;background:transparent;border:none;outline:none;
+  padding:13px 18px;font-family:var(--ff-body);font-size:14px;color:var(--text);
+}
+.asma-filter-input::placeholder{color:var(--muted);}
+.asma-filter-icon{padding:0 16px;color:var(--gold);font-size:16px;opacity:0.7;}
+
+/* Names grid */
+.asma-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:16px;
+}
+.name-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:22px 18px 18px;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.28s cubic-bezier(0.34,1.56,0.64,1);
+  text-align:center;
+}
+.name-card::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 70%);
+  opacity:0;transition:opacity 0.3s;
+}
+.name-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--green2),var(--gold));
+  background-size:200% 100%;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.35s ease;
+}
+.name-card:hover{
+  border-color:var(--border2);
+  transform:translateY(-4px);
+  box-shadow:0 12px 32px rgba(0,0,0,0.3);
+}
+.name-card:hover::before{opacity:1;}
+.name-card:hover::after{transform:scaleX(1);}
+.name-card-num{
+  position:absolute;top:10px;left:13px;
+  font-family:var(--ff-display);font-size:11px;
+  color:var(--gold);opacity:0.6;letter-spacing:1px;
+}
+.name-card-arabic{
+  font-family:var(--ff-arabic);
+  font-size:clamp(26px,3vw,34px);
+  color:var(--gold2);
+  line-height:1.4;
+  margin-bottom:10px;
+  text-shadow:0 0 20px rgba(201,168,76,0.2);
+}
+.name-card-trans{
+  font-family:var(--ff-display);
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.name-card-meaning{
+  font-family:var(--ff-body);
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.5;
+  opacity:0.8;
+}
+.name-card-glow{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:60%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:0;transition:opacity 0.3s;
+}
+.name-card:hover .name-card-glow{opacity:0.5;}
+
+/* No results */
+.asma-empty{
+  text-align:center;padding:60px 20px;
+  font-family:var(--ff-display);font-size:18px;
+  color:var(--muted);font-style:italic;
+  grid-column:1/-1;
+}
+
+/* ── NAMES DETAIL MODAL ── */
+.names-overlay{
+  display:none;position:fixed;inset:0;z-index:300;
+  background:rgba(0,0,0,0.88);backdrop-filter:blur(10px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.names-overlay.active{display:flex;animation:fadeIn 0.22s ease;}
+.names-modal{
+  background:var(--bg2);
+  border:1px solid var(--border2);
+  border-radius:12px;
+  max-width:580px;width:100%;
+  max-height:92vh;overflow-y:auto;
+  animation:slideUp 0.3s ease;
+  position:relative;
+  box-shadow:0 32px 80px rgba(0,0,0,0.5);
+}
+
+/* Modal header band */
+.nm-header{
+  background:linear-gradient(135deg,var(--bg3) 0%,var(--bg2) 100%);
+  border-bottom:1px solid var(--border);
+  padding:28px 28px 24px;
+  text-align:center;
+  position:relative;
+}
+.nm-badge{
+  display:inline-block;
+  font-family:var(--ff-display);font-size:11px;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);
+  background:rgba(201,168,76,0.1);
+  border:1px solid var(--border2);
+  border-radius:20px;padding:4px 14px;
+  margin-bottom:16px;
+}
+.nm-arabic{
+  font-family:var(--ff-arabic);
+  font-size:clamp(48px,8vw,72px);
+  color:var(--gold2);
+  line-height:1.2;
+  text-shadow:0 0 40px rgba(201,168,76,0.35),0 4px 16px rgba(0,0,0,0.4);
+  margin-bottom:8px;
+}
+.nm-transliteration{
+  font-family:var(--ff-display);
+  font-size:22px;font-weight:500;
+  color:var(--text);
+  letter-spacing:0.5px;
+  margin-bottom:6px;
+}
+.nm-meaning-tag{
+  font-family:var(--ff-body);font-size:13px;
+  color:var(--muted);
+}
+.nm-close{
+  position:absolute;top:16px;right:16px;
+  background:none;border:1px solid var(--border);
+  color:var(--muted);width:32px;height:32px;border-radius:50%;
+  cursor:pointer;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;
+}
+.nm-close:hover{border-color:var(--gold);color:var(--gold);}
+
+/* Modal body */
+.nm-body{padding:24px 28px 28px;}
+
+/* Audio button */
+.nm-audio-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:13px 20px;
+  background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(201,168,76,0.06));
+  border:1px solid var(--border2);
+  border-radius:8px;
+  color:var(--gold);
+  font-family:var(--ff-body);font-size:14px;
+  letter-spacing:1px;text-transform:uppercase;
+  cursor:pointer;
+  transition:all 0.25s;
+  margin-bottom:24px;
+}
+.nm-audio-btn:hover{
+  background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.1));
+  border-color:var(--gold);
+  box-shadow:0 0 20px rgba(201,168,76,0.15);
+}
+.nm-audio-btn.playing{
+  background:linear-gradient(135deg,rgba(46,125,94,0.2),rgba(46,125,94,0.1));
+  border-color:var(--green2);color:var(--green2);
+}
+.nm-audio-icon{font-size:18px;transition:transform 0.2s;}
+.nm-audio-btn:hover .nm-audio-icon{transform:scale(1.15);}
+
+/* Sections inside modal */
+.nm-section{margin-bottom:22px;}
+.nm-section-label{
+  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);font-weight:600;
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:12px;font-family:var(--ff-display);font-style:italic;
+}
+.nm-section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* Quranic context block */
+.nm-quran-block{
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:18px 20px;
+}
+.nm-quran-ref{
+  font-family:var(--ff-display);font-size:11px;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);font-style:italic;
+  margin-bottom:10px;
+}
+.nm-quran-snippet{
+  font-family:var(--ff-display);font-size:17px;
+  color:var(--text);line-height:1.8;
+  border-left:2px solid var(--gold);
+  padding-left:14px;
+  margin-bottom:0;
+}
+
+/* Meaning full text */
+.nm-meaning-full{
+  font-family:var(--ff-body);font-size:14px;
+  color:var(--muted);line-height:1.8;
+}
+
+/* Spiritual reflection */
+.nm-reflection{
+  background:linear-gradient(135deg,rgba(46,125,94,0.08),rgba(201,168,76,0.05));
+  border:1px solid rgba(46,125,94,0.2);
+  border-radius:8px;
+  padding:16px 18px;
+  font-family:var(--ff-display);font-size:16px;
+  color:var(--text);line-height:1.8;
+  font-style:italic;
+}
+
+/* Nav dots for prev/next */
+.nm-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:16px;
+  border-top:1px solid var(--border);
+  margin-top:4px;
+}
+.nm-nav-btn{
+  display:flex;align-items:center;gap:6px;
+  background:none;border:1px solid var(--border);
+  color:var(--muted);border-radius:4px;
+  padding:8px 16px;font-size:12px;
+  font-family:var(--ff-body);letter-spacing:1px;text-transform:uppercase;
+  cursor:pointer;transition:all 0.2s;
+}
+.nm-nav-btn:hover{border-color:var(--border2);color:var(--gold);}
+.nm-nav-btn:disabled{opacity:0.3;cursor:not-allowed;}
+.nm-nav-counter{
+  font-family:var(--ff-arabic);font-size:22px;color:var(--gold);opacity:0.5;
+}
+
+/* Light theme overrides for Names section */
+[data-theme="light"] .name-card{background:#f0ece0;box-shadow:0 2px 8px rgba(160,120,48,0.07);}
+[data-theme="light"] .name-card:hover{box-shadow:0 12px 32px rgba(160,120,48,0.18);}
+[data-theme="light"] .names-overlay{background:rgba(20,16,8,0.75);}
+[data-theme="light"] .names-modal{background:#f0ece0;box-shadow:0 32px 80px rgba(100,70,20,0.25);}
+[data-theme="light"] .nm-header{background:linear-gradient(135deg,#e8e2d0,#f0ece0);}
+[data-theme="light"] .nm-quran-block{background:#e8e2d0;border-color:rgba(160,120,48,0.25);}
+[data-theme="light"] .nm-reflection{background:linear-gradient(135deg,rgba(30,94,66,0.07),rgba(160,120,48,0.05));border-color:rgba(30,94,66,0.2);}
+[data-theme="light"] .asma-filter{background:#f0ece0;}
+
+/* Responsive */
+@media(max-width:600px){
+  #asma{padding:60px 20px;}
+  .asma-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;}
+  .nm-body{padding:18px 20px 22px;}
+  .nm-header{padding:22px 20px 20px;}
+}
+
+/* ═══════════════════════════════════════════
+   DUAS SECTION
+═══════════════════════════════════════════ */
+#duas{
+  position:relative;z-index:1;
+  padding:80px 40px;
+  border-top:1px solid var(--border);
+  max-width:1200px;margin:0 auto;
+}
+.duas-intro{
+  font-family:var(--ff-display);font-size:16px;color:var(--muted);
+  line-height:1.9;max-width:620px;margin:0 auto 32px;
+  text-align:center;font-style:italic;
+}
+
+/* Category filter tabs */
+.duas-tabs{
+  display:flex;flex-wrap:wrap;gap:8px;
+  justify-content:center;
+  margin-bottom:16px;
+}
+.duas-tab{
+  padding:7px 18px;
+  font-family:var(--ff-body);font-size:12px;
+  letter-spacing:1px;text-transform:uppercase;
+  border:1px solid var(--border2);
+  border-radius:20px;
+  color:var(--muted);
+  background:transparent;
+  cursor:pointer;
+  transition:all 0.22s;
+}
+.duas-tab:hover{color:var(--gold);border-color:var(--gold);}
+.duas-tab.active{
+  background:var(--gold);
+  color:#0a0c0f;
+  border-color:var(--gold);
+  font-weight:600;
+}
+[data-theme="light"] .duas-tab.active{color:#fff;}
+
+/* Search bar */
+.duas-searchbar{
+  display:flex;align-items:center;gap:10px;
+  max-width:480px;margin:0 auto 40px;
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:4px;overflow:hidden;
+  transition:border-color 0.3s;
+}
+.duas-searchbar:focus-within{border-color:var(--gold);box-shadow:0 0 20px rgba(201,168,76,0.1);}
+.duas-search-input{
+  flex:1;background:transparent;border:none;outline:none;
+  padding:13px 18px;font-family:var(--ff-body);font-size:14px;color:var(--text);
+}
+.duas-search-input::placeholder{color:var(--muted);}
+.duas-search-icon{padding:0 16px;color:var(--gold);font-size:15px;opacity:0.7;}
+
+/* Count badge */
+.duas-count{
+  text-align:center;margin-bottom:24px;
+  font-family:var(--ff-display);font-size:13px;
+  color:var(--muted);font-style:italic;letter-spacing:1px;
+}
+
+/* Grid */
+.duas-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:18px;
+}
+.dua-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:22px 20px 18px;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.28s cubic-bezier(0.34,1.2,0.64,1);
+}
+.dua-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--green2));
+  transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;
+}
+.dua-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.25);}
+.dua-card:hover::before{transform:scaleX(1);}
+
+.dua-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:12px;}
+.dua-cat-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--ff-body);font-size:10px;
+  letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
+  padding:3px 10px;border-radius:12px;
+  border:1px solid;
+  flex-shrink:0;
+}
+/* Category colour palette */
+.cat-forgiveness{color:#e8c97a;border-color:rgba(232,201,122,0.3);background:rgba(232,201,122,0.07);}
+.cat-guidance{color:#7ad4e8;border-color:rgba(122,212,232,0.3);background:rgba(122,212,232,0.07);}
+.cat-family{color:#e87a9e;border-color:rgba(232,122,158,0.3);background:rgba(232,122,158,0.07);}
+.cat-ease{color:#7ae8a8;border-color:rgba(122,232,168,0.3);background:rgba(122,232,168,0.07);}
+.cat-patience{color:#c4a8e8;border-color:rgba(196,168,232,0.3);background:rgba(196,168,232,0.07);}
+.cat-protection{color:#e8a87a;border-color:rgba(232,168,122,0.3);background:rgba(232,168,122,0.07);}
+.cat-gratitude{color:#a8e87a;border-color:rgba(168,232,122,0.3);background:rgba(168,232,122,0.07);}
+.cat-health{color:#e87a7a;border-color:rgba(232,122,122,0.3);background:rgba(232,122,122,0.07);}
+.cat-general{color:#c9a84c;border-color:rgba(201,168,76,0.3);background:rgba(201,168,76,0.07);}
+.cat-prophetic{
+  color:#3a9e78;border-color:rgba(58,158,120,0.35);background:rgba(58,158,120,0.08);
+}
+
+.dua-type-tag{
+  font-family:var(--ff-display);font-size:10px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--muted);font-style:italic;
+}
+
+.dua-arabic{
+  font-family:var(--ff-arabic);font-size:20px;
+  color:var(--gold2);
+  text-align:right;direction:rtl;
+  line-height:1.9;margin-bottom:14px;
+}
+.dua-trans{
+  font-family:var(--ff-display);font-size:13px;
+  color:var(--muted);font-style:italic;
+  margin-bottom:10px;line-height:1.5;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.dua-meaning{
+  font-size:13px;color:var(--muted);line-height:1.6;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.dua-source-row{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:14px;padding-top:12px;
+  border-top:1px solid var(--border);
+}
+.dua-source{
+  font-family:var(--ff-display);font-size:11px;
+  color:var(--gold);letter-spacing:1px;font-style:italic;
+}
+.dua-expand-hint{
+  font-size:11px;color:var(--muted);letter-spacing:0.5px;
+}
+
+/* Empty state */
+.duas-empty{
+  text-align:center;padding:60px 20px;
+  font-family:var(--ff-display);font-size:18px;
+  color:var(--muted);font-style:italic;
+  grid-column:1/-1;
+}
+
+/* ── DUA DETAIL MODAL ── */
+.dua-overlay{
+  display:none;position:fixed;inset:0;z-index:300;
+  background:rgba(0,0,0,0.88);backdrop-filter:blur(10px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.dua-overlay.active{display:flex;animation:fadeIn 0.22s ease;}
+.dua-modal{
+  background:var(--bg2);
+  border:1px solid var(--border2);
+  border-radius:12px;
+  max-width:640px;width:100%;
+  max-height:92vh;overflow-y:auto;
+  animation:slideUp 0.3s ease;
+  position:relative;
+  box-shadow:0 32px 80px rgba(0,0,0,0.5);
+}
+
+/* Modal header */
+.dm-header{
+  background:linear-gradient(135deg,var(--bg3) 0%,var(--bg2) 100%);
+  border-bottom:1px solid var(--border);
+  padding:24px 28px 20px;
+  position:relative;
+}
+.dm-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.dm-badges{display:flex;gap:8px;flex-wrap:wrap;}
+.dm-close{
+  background:none;border:1px solid var(--border);
+  color:var(--muted);width:32px;height:32px;border-radius:50%;
+  cursor:pointer;font-size:16px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;flex-shrink:0;
+}
+.dm-close:hover{border-color:var(--gold);color:var(--gold);}
+.dm-arabic{
+  font-family:var(--ff-arabic);
+  font-size:clamp(22px,3.5vw,32px);
+  color:var(--gold2);
+  text-align:right;direction:rtl;
+  line-height:2;
+  text-shadow:0 0 30px rgba(201,168,76,0.2);
+}
+
+/* Modal body */
+.dm-body{padding:22px 28px 28px;}
+.dm-section{margin-bottom:20px;}
+.dm-label{
+  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);font-weight:600;
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:10px;
+  font-family:var(--ff-display);font-style:italic;
+}
+.dm-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.dm-transliteration{
+  font-family:var(--ff-display);font-size:16px;font-style:italic;
+  color:var(--muted);line-height:1.8;
+}
+.dm-translation{
+  font-family:var(--ff-display);font-size:17px;
+  color:var(--text);line-height:1.8;
+  border-left:2px solid var(--gold);
+  padding-left:14px;
+}
+.dm-source-block{
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:6px;padding:14px 16px;
+  font-family:var(--ff-display);font-size:14px;
+  color:var(--muted);line-height:1.6;
+}
+.dm-source-block strong{color:var(--gold);display:block;margin-bottom:4px;font-size:12px;letter-spacing:1px;text-transform:uppercase;}
+.dm-context{
+  background:linear-gradient(135deg,rgba(46,125,94,0.08),rgba(201,168,76,0.05));
+  border:1px solid rgba(46,125,94,0.2);
+  border-radius:8px;
+  padding:14px 16px;
+  font-family:var(--ff-body);font-size:14px;
+  color:var(--muted);line-height:1.8;
+  font-style:italic;
+}
+
+/* Audio button reused */
+.dm-audio-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:12px 20px;
+  background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(201,168,76,0.06));
+  border:1px solid var(--border2);
+  border-radius:8px;
+  color:var(--gold);
+  font-family:var(--ff-body);font-size:13px;
+  letter-spacing:1px;text-transform:uppercase;
+  cursor:pointer;
+  transition:all 0.25s;
+  margin-bottom:20px;
+}
+.dm-audio-btn:hover{background:linear-gradient(135deg,rgba(201,168,76,0.2),rgba(201,168,76,0.1));border-color:var(--gold);box-shadow:0 0 18px rgba(201,168,76,0.12);}
+.dm-audio-btn.playing{background:linear-gradient(135deg,rgba(46,125,94,0.2),rgba(46,125,94,0.1));border-color:var(--green2);color:var(--green2);}
+
+/* Nav inside modal */
+.dm-nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:16px;border-top:1px solid var(--border);
+}
+.dm-nav-btn{
+  display:flex;align-items:center;gap:6px;
+  background:none;border:1px solid var(--border);
+  color:var(--muted);border-radius:4px;
+  padding:8px 16px;font-size:12px;
+  font-family:var(--ff-body);letter-spacing:1px;text-transform:uppercase;
+  cursor:pointer;transition:all 0.2s;
+}
+.dm-nav-btn:hover{border-color:var(--border2);color:var(--gold);}
+.dm-nav-btn:disabled{opacity:0.3;cursor:not-allowed;}
+.dm-nav-counter{font-family:var(--ff-display);font-size:13px;color:var(--muted);font-style:italic;}
+
+/* Light theme */
+[data-theme="light"] .dua-card{background:#f0ece0;}
+[data-theme="light"] .dua-card:hover{box-shadow:0 10px 28px rgba(160,120,48,0.15);}
+[data-theme="light"] .dua-overlay{background:rgba(20,16,8,0.75);}
+[data-theme="light"] .dua-modal{background:#f0ece0;box-shadow:0 32px 80px rgba(100,70,20,0.25);}
+[data-theme="light"] .dm-header{background:linear-gradient(135deg,#e8e2d0,#f0ece0);}
+[data-theme="light"] .dm-source-block{background:#e8e2d0;}
+[data-theme="light"] .dm-context{background:linear-gradient(135deg,rgba(30,94,66,0.07),rgba(160,120,48,0.05));border-color:rgba(30,94,66,0.2);}
+[data-theme="light"] .duas-searchbar{background:#f0ece0;}
+
+@media(max-width:600px){
+  #duas{padding:60px 20px;}
+  .duas-grid{grid-template-columns:1fr;}
+  .dm-body{padding:16px 18px 22px;}
+  .dm-header{padding:18px 18px 16px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    القرآن الكريم
+    <span>Al-Quran</span>
+  </div>
+  <div class="nav-links">
+    <a href="#search">Search</a>
+    <a href="#popular">Popular Ayahs</a>
+    <a href="#specialities">Specialities</a>
+    <a href="#asma">99 Names</a>
+    <a href="#duas">Duas</a>
+    <a href="#conclusion">Conclusion</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+  <div class="hero-sub">In the name of Allah, the Most Gracious, the Most Merciful</div>
+  <h1>The <em>Noble</em> Quran</h1>
+  <p class="hero-desc">The eternal word of Allah — 114 Surahs, 6,236 Ayahs, a complete guide for all of humanity until the end of time.</p>
+  <span class="divider-ornament">۞</span>
+</section>
+
+<!-- SEARCH -->
+<div id="search" class="search-section">
+  <p class="search-label"> <br> <br> Search any Ayah by reference</p>
+  <div class="search-box">
+    <input class="search-input" id="searchInput" type="text" placeholder="e.g. 91:4  or  2:255 " autocomplete="off" spellcheck="false"/>
+    <button class="search-btn" onclick="searchAyah()">Search Ayah</button>
+  </div>
+  <p class="search-hint">Format: <code>Surah:Ayah</code> — try <code>2:255</code> (Ayatul Kursi) <code>112:1</code></p>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-ref" id="modalRef"></div>
+        <div class="modal-surah" id="modalSurah"></div>
+      </div>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <div class="modal-loading"><div class="spinner-gold"></div>Loading ayah…</div>
+    </div>
+  </div>
+</div>
+
+<!-- POPULAR AYAHS -->
+<section id="popular" class="section">
+  <div class="section-ornament">
+    <div class="section-title">Popular <em>Ayahs</em></div>
+  </div>
+  <div class="ayahs-grid" id="popularGrid"></div>
+</section>
+
+<!-- SPECIALITIES -->
+<section id="specialities" class="section" style="border-top:1px solid var(--border);background:var(--bg2);">
+  <div class="section-ornament">
+    <div class="section-title">30 <em>Specialities</em> of the Quran</div>
+  </div>
+  <p class="spec-intro">The Holy Quran is not merely a book — it is a living miracle, a timeless constitution, and the most preserved text in human history. Here are 30 of its remarkable qualities.</p>
+  <div class="spec-grid" id="specGrid"></div>
+</section>
+<br> <br>
+
+<br> <br>
+
+<!-- ═══ 99 NAMES OF ALLAH ═══ -->
+<section id="asma">
+  <div class="section-ornament">
+    <div class="section-title">Asmāʾ <em>ul-Ḥusnā</em> — The 99 Names</div>
+  </div>
+  <p class="asma-intro">
+    Allah has ninety-nine names — whoever memorises them will enter Paradise. Each name is a door to knowing Him, a light to reflect His attributes in your own character.
+  </p>
+  <div class="asma-filter">
+    <span class="asma-filter-icon">🔍</span>
+    <input class="asma-filter-input" id="asmaSearch" type="text"
+      placeholder="Search by name, meaning or transliteration…" autocomplete="off" spellcheck="false"/>
+  </div>
+  <div class="asma-grid" id="asmaGrid"></div>
+</section>
+
+<!-- NAMES DETAIL MODAL -->
+<div class="names-overlay" id="namesOverlay" onclick="closeNamesModal(event)">
+  <div class="names-modal" id="namesModal">
+    <div class="nm-header">
+      <div class="nm-badge" id="nmBadge">Name 1 of 99</div>
+      <div class="nm-arabic" id="nmArabic"></div>
+      <div class="nm-transliteration" id="nmTrans"></div>
+      <div class="nm-meaning-tag" id="nmMeaningTag"></div>
+      <button class="nm-close" onclick="closeNamesModalDirect()">✕</button>
+    </div>
+    <div class="nm-body">
+
+      <!-- Audio -->
+      <button class="nm-audio-btn" id="nmAudioBtn" onclick="toggleNameAudio()">
+        <span class="nm-audio-icon" id="nmAudioIcon">▶</span>
+        <span id="nmAudioLabel">Listen to Pronunciation</span>
+      </button>
+
+      <!-- Full Meaning -->
+      <div class="nm-section">
+        <div class="nm-section-label">Full Meaning</div>
+        <p class="nm-meaning-full" id="nmMeaningFull"></p>
+      </div>
+
+      <!-- Quranic Context -->
+      <div class="nm-section">
+        <div class="nm-section-label">Quranic Context</div>
+        <div class="nm-quran-block">
+          <div class="nm-quran-ref" id="nmRef"></div>
+          <div class="nm-quran-snippet" id="nmSnippet"></div>
+        </div>
+      </div>
+
+      <!-- Spiritual Reflection -->
+      <div class="nm-section">
+        <div class="nm-section-label">Spiritual Reflection</div>
+        <div class="nm-reflection" id="nmReflection"></div>
+      </div>
+
+      <!-- Prev / Next -->
+      <div class="nm-nav">
+        <button class="nm-nav-btn" id="nmPrev" onclick="navigateName(-1)">← Prev</button>
+        <span class="nm-nav-counter" id="nmCounter">١</span>
+        <button class="nm-nav-btn" id="nmNext" onclick="navigateName(1)">Next →</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DUAS & ADHKAR ═══ -->
+<section id="duas">
+  <div class="section-ornament">
+    <div class="section-title">Rabbana <em>Duas</em> &amp; Prophetic Adhkar</div>
+  </div>
+  <p class="duas-intro">
+    Sixty curated supplications — 40 Rabbana Duas from the Quran and 20 major Prophetic Adhkars — organised by life's needs. Each dua is a conversation with Allah.
+  </p>
+
+  <!-- Category Tabs -->
+  <div class="duas-tabs" id="duasTabs">
+    <button class="duas-tab active" data-cat="all">All</button>
+    <button class="duas-tab" data-cat="Forgiveness">🤲 Forgiveness</button>
+    <button class="duas-tab" data-cat="Guidance">🌟 Guidance</button>
+    <button class="duas-tab" data-cat="Family">👨‍👩‍👧 Family</button>
+    <button class="duas-tab" data-cat="Ease &amp; Success">✨ Ease &amp; Success</button>
+    <button class="duas-tab" data-cat="Patience">🌿 Patience</button>
+    <button class="duas-tab" data-cat="Protection">🛡️ Protection</button>
+    <button class="duas-tab" data-cat="Gratitude">💛 Gratitude</button>
+    <button class="duas-tab" data-cat="Health">💚 Health</button>
+    <button class="duas-tab" data-cat="General">☪️ General</button>
+  </div>
+
+  <!-- Search -->
+  <div class="duas-searchbar">
+    <span class="duas-search-icon">🔍</span>
+    <input class="duas-search-input" id="duasSearch" type="text"
+      placeholder="Search duas by keyword, category or Arabic…" autocomplete="off" spellcheck="false"/>
+  </div>
+
+  <div class="duas-count" id="duasCount">Showing 60 duas</div>
+  <div class="duas-grid" id="duasGrid"></div>
+</section>
+
+<!-- DUA DETAIL MODAL -->
+<div class="dua-overlay" id="duaOverlay" onclick="closeDuaModal(event)">
+  <div class="dua-modal" id="duaModal">
+    <div class="dm-header">
+      <div class="dm-header-top">
+        <div class="dm-badges">
+          <span class="dua-cat-badge" id="dmCatBadge"></span>
+          <span class="dua-type-tag" id="dmTypeBadge"></span>
+        </div>
+        <button class="dm-close" onclick="closeDuaModalDirect()">✕</button>
+      </div>
+      <div class="dm-arabic" id="dmArabic"></div>
+    </div>
+    <div class="dm-body">
+      <!-- Audio -->
+      <button class="dm-audio-btn" id="dmAudioBtn" onclick="toggleDuAudio()">
+        <span id="dmAudioIcon"></span>
+        <span id="dmAudioLabel">Listen to Pronunciation (Work In Progress)</span>
+      </button>
+
+      <div class="dm-section">
+        <div class="dm-label">Transliteration</div>
+        <div class="dm-transliteration" id="dmTrans"></div>
+      </div>
+      <div class="dm-section">
+        <div class="dm-label">English Translation</div>
+        <div class="dm-translation" id="dmTranslation"></div>
+      </div>
+      <div class="dm-section">
+        <div class="dm-label">Source</div>
+        <div class="dm-source-block"><strong id="dmSourceLabel"></strong><span id="dmSourceText"></span></div>
+      </div>
+      <div class="dm-section">
+        <div class="dm-label">Context &amp; Benefit</div>
+        <div class="dm-context" id="dmContext"></div>
+      </div>
+
+      <div class="dm-nav">
+        <button class="dm-nav-btn" id="dmPrev" onclick="navigateDua(-1)">← Prev</button>
+        <span class="dm-nav-counter" id="dmCounter"></span>
+        <button class="dm-nav-btn" id="dmNext" onclick="navigateDua(1)">Next →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONCLUSION -->
+<section id="conclusion" class="conclusion">
+  <div class="conclusion-arabic">وَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِّلْمُؤْمِنِينَ</div>
+  <div class="conclusion-trans">"And We send down of the Quran that which is healing and mercy for the believers." — 17:82</div>
+  <p class="conclusion-text">
+    The Quran is the <em>final and complete</em> revelation from Allah to humanity, sent through the Prophet Muhammad ﷺ over 23 years. It addresses every dimension of human existence — faith, law, ethics, history, science, and the soul. Over <em>1.8 billion Muslims</em> recite it daily, millions have memorised it completely, and it has remained <em>unchanged for over 1,400 years</em> — not a single letter altered. It is the most read, most memorised, and most studied book in all of human history. To engage with the Quran is to engage with the divine — may it be a light, a healing, and a guide for all who seek it.
+  </p>
+  <div class="divider-ornament">﴾ صَدَقَ اللَّهُ الْعَظِيمُ ﴿</div>
+  <p style="font-size:13px;color:var(--muted);font-family:var(--ff-display);font-style:italic;">"Allah the Almighty has spoken the truth."</p>
+  <div class="conclusion-seal">☽</div>
+</section>
+
+<footer>
+  <p>A Muhammed KK Product</p>
+  <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">
+    <span class="theme-icon" id="themeIcon">☀️</span>
+    <span id="themeLabel">Light Mode</span>
+  </button>
+</footer>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────
+const POPULAR_AYAHS = [
+  { ref:"1:1",  surah:"Al-Fatihah", arabic:"بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", english:"In the name of Allah, the Entirely Merciful, the Especially Merciful." },
+  { ref:"2:255", surah:"Al-Baqarah — Ayatul Kursi", arabic:"اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ", english:"Allah — there is no deity except Him, the Ever-Living, the Sustainer of existence. Neither drowsiness overtakes Him nor sleep." },
+  { ref:"94:5",  surah:"Ash-Sharh", arabic:"فَإِنَّ مَعَ الْعُسْرِ يُسْرًا", english:"For indeed, with hardship will be ease." },
+  { ref:"2:286", surah:"Al-Baqarah", arabic:"لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا", english:"Allah does not burden a soul beyond that it can bear." },
+  { ref:"3:173", surah:"Ali 'Imran", arabic:"حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ", english:"Sufficient for us is Allah, and He is the best Disposer of affairs." },
+  { ref:"65:3",  surah:"At-Talaq", arabic:"وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ", english:"And whoever relies upon Allah — then He is sufficient for him." },
+  { ref:"2:152", surah:"Al-Baqarah", arabic:"فَاذْكُرُونِي أَذْكُرْكُمْ وَاشْكُرُوا لِي وَلَا تَكْفُرُونِ", english:"So remember Me; I will remember you. And be grateful to Me and do not deny Me." },
+  { ref:"13:28", surah:"Ar-Ra'd", arabic:"أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ", english:"Verily, in the remembrance of Allah do hearts find rest." },
+  { ref:"39:53", surah:"Az-Zumar", arabic:"لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا", english:"Do not despair of the mercy of Allah. Indeed, Allah forgives all sins." },
+  { ref:"91:9",  surah:"Ash-Shams", arabic:"قَدْ أَفْلَحَ مَن زَكَّاهَا", english:"He has succeeded who purifies it (the soul)." },
+  { ref:"55:13", surah:"Ar-Rahman", arabic:"فَبِأَيِّ آلَاءِ رَبِّكُمَا تُكَذِّبَانِ", english:"So which of the favours of your Lord would you deny?" },
+  { ref:"112:1", surah:"Al-Ikhlas", arabic:"قُلْ هُوَ اللَّهُ أَحَدٌ", english:"Say: He is Allah, the One." },
+];
+
+const MALAYALAM_TRANSLATIONS = {
+  "1:1":   "പരമകാരുണികനും കരുണാനിധിയുമായ അല്ലാഹുവിന്റെ നാമത്തിൽ.",
+  "2:255": "അല്ലാഹു — അവനല്ലാതെ ആരാധ്യനില്ല; നിത്യജീവനും, സ്വതഃ നിലകൊള്ളുന്നവനും. അവനെ മയക്കമോ ഉറക്കമോ ബാധിക്കുകയില്ല.",
+  "94:5":  "തീർച്ചയായും, പ്രയാസത്തോടൊപ്പം എളുപ്പവുമുണ്ട്.",
+  "2:286": "അല്ലാഹു ഒരാളെ അവന്റെ കഴിവിലധികം ഭാരപ്പെടുത്തുകയില്ല.",
+  "3:173": "അല്ലാഹു നമ്മുക്ക് മതി; അവൻ ഉത്തമ കൈകാര്യകർത്താവ് തന്നെ.",
+  "65:3":  "ആരെങ്കിലും അല്ലാഹുവിൽ ഭരമേൽപ്പിക്കുന്നുവോ, അവൻ അവർക്ക് മതി.",
+  "2:152": "നിങ്ങൾ എന്നെ സ്മരിക്കുക; ഞാൻ നിങ്ങളെ സ്മരിക്കും. എന്നോട് കൃതജ്ഞത കാണിക്കുക, നന്ദികേട് കാണിക്കരുത്.",
+  "13:28": "അറിയുക, അല്ലാഹുവിന്റെ സ്മരണ കൊണ്ടു മാത്രമേ ഹൃദയങ്ങൾക്ക് ശാന്തി ലഭിക്കൂ.",
+  "39:53": "അല്ലാഹുവിന്റെ കാരുണ്യത്തെ കുറിച്ച് നിരാശരാകരുത്. അല്ലാഹു എല്ലാ പാപങ്ങളും പൊറുക്കും.",
+  "91:9":  "ആത്മാവിനെ ശുദ്ധീകരിച്ചവൻ തീർച്ചയായും വിജയിച്ചു.",
+  "55:13": "അപ്പോൾ നിങ്ങൾ ഇരുവരും നിങ്ങളുടെ രക്ഷിതാവിന്റെ അനുഗ്രഹങ്ങളിൽ ഏതിനെ നിഷേധിക്കും?",
+  "112:1": "പറയുക: അവൻ അല്ലാഹു, ഏകൻ.",
+};
+
+const SURAH_NAMES = {
+  1:"Al-Fatihah",2:"Al-Baqarah",3:"Ali 'Imran",4:"An-Nisa",5:"Al-Ma'idah",
+  6:"Al-An'am",7:"Al-A'raf",8:"Al-Anfal",9:"At-Tawbah",10:"Yunus",
+  11:"Hud",12:"Yusuf",13:"Ar-Ra'd",14:"Ibrahim",15:"Al-Hijr",
+  16:"An-Nahl",17:"Al-Isra",18:"Al-Kahf",19:"Maryam",20:"Ta-Ha",
+  21:"Al-Anbiya",22:"Al-Hajj",23:"Al-Mu'minun",24:"An-Nur",25:"Al-Furqan",
+  26:"Ash-Shu'ara",27:"An-Naml",28:"Al-Qasas",29:"Al-Ankabut",30:"Ar-Rum",
+  31:"Luqman",32:"As-Sajdah",33:"Al-Ahzab",34:"Saba",35:"Fatir",
+  36:"Ya-Sin",37:"As-Saffat",38:"Sad",39:"Az-Zumar",40:"Ghafir",
+  41:"Fussilat",42:"Ash-Shura",43:"Az-Zukhruf",44:"Ad-Dukhan",45:"Al-Jathiyah",
+  46:"Al-Ahqaf",47:"Muhammad",48:"Al-Fath",49:"Al-Hujurat",50:"Qaf",
+  51:"Adh-Dhariyat",52:"At-Tur",53:"An-Najm",54:"Al-Qamar",55:"Ar-Rahman",
+  56:"Al-Waqi'ah",57:"Al-Hadid",58:"Al-Mujadila",59:"Al-Hashr",60:"Al-Mumtahanah",
+  61:"As-Saf",62:"Al-Jumu'ah",63:"Al-Munafiqun",64:"At-Taghabun",65:"At-Talaq",
+  66:"At-Tahrim",67:"Al-Mulk",68:"Al-Qalam",69:"Al-Haqqah",70:"Al-Ma'arij",
+  71:"Nuh",72:"Al-Jinn",73:"Al-Muzzammil",74:"Al-Muddaththir",75:"Al-Qiyamah",
+  76:"Al-Insan",77:"Al-Mursalat",78:"An-Naba",79:"An-Nazi'at",80:"'Abasa",
+  81:"At-Takwir",82:"Al-Infitar",83:"Al-Mutaffifin",84:"Al-Inshiqaq",85:"Al-Buruj",
+  86:"At-Tariq",87:"Al-A'la",88:"Al-Ghashiyah",89:"Al-Fajr",90:"Al-Balad",
+  91:"Ash-Shams",92:"Al-Layl",93:"Ad-Duha",94:"Ash-Sharh",95:"At-Tin",
+  96:"Al-Alaq",97:"Al-Qadr",98:"Al-Bayyinah",99:"Az-Zalzalah",100:"Al-Adiyat",
+  101:"Al-Qari'ah",102:"At-Takathur",103:"Al-Asr",104:"Al-Humazah",105:"Al-Fil",
+  106:"Quraysh",107:"Al-Ma'un",108:"Al-Kawthar",109:"Al-Kafirun",110:"An-Nasr",
+  111:"Al-Masad",112:"Al-Ikhlas",113:"Al-Falaq",114:"An-Nas"
+};
+
+const SPECIALITIES = [
+  {t:"Preserved Word of Allah", d:"The Quran is the verbatim word of Allah, revealed to Prophet Muhammad ﷺ through Archangel Jibreel (Gabriel)."},
+  {t:"Perfectly Preserved", d:"Not a single letter has changed in over 1,400 years — the most perfectly preserved text in human history."},
+  {t:"Memorised by Millions", d:"Over 10 million people (Huffaz) have memorised the entire Quran word for word — unique among all world scriptures."},
+  {t:"Revealed Over 23 Years", d:"The Quran was revealed gradually over 23 years, addressing real situations and guiding the early Muslim community."},
+  {t:"Mathematical Miracle", d:"The word 'day' (يوم) appears exactly 365 times; 'month' (شهر) appears 12 times — matching the solar and lunar calendar."},
+  {t:"Scientific Foreknowledge", d:"The Quran describes the expanding universe (51:47), embryonic development, ocean layers, and other discoveries made centuries later."},
+  {t:"Most Read Book on Earth", d:"The Quran is recited by 1.8 billion Muslims every single day — no other book is read as frequently or as devotedly."},
+  {t:"Linguistic Miracle", d:"Arab linguists of the 7th century — masters of poetry and rhetoric — were unable to produce anything comparable despite being challenged."},
+  {t:"114 Surahs, 6,236 Ayahs", d:"The Quran contains 114 chapters (Surahs) with a total of 6,236 verses (Ayahs), and approximately 77,000 words."},
+  {t:"Healing for the Heart", d:"Allah declares: 'And We send down of the Quran that which is healing and mercy for the believers.' (17:82)"},
+  {t:"Complete Way of Life", d:"The Quran covers theology, law, ethics, family, economics, governance, science, and spirituality — a complete constitution for life."},
+  {t:"Inimitable Style", d:"Its literary style — the 'ijaz' (inimitability) — is beyond human composition. No literature before or after matches its unique form."},
+  {t:"Challenge Unanswered", d:"Allah challenged all of humanity to produce even a single chapter like the Quran (2:23). Over 1,400 years — no one has succeeded."},
+  {t:"No Contradictions", d:"'Had it been from other than Allah, they would have found within it much contradiction.' (4:82) — The Quran has none."},
+  {t:"Stories of the Prophets", d:"The Quran narrates the stories of 25 prophets, from Adam to Muhammad ﷺ, as lessons and guidance for humanity."},
+  {t:"First Word: Iqra", d:"The very first word revealed was 'Read' (اقرأ) — making knowledge and learning the foundation of Islam."},
+  {t:"Surah Al-Fatihah", d:"The opening chapter is recited at least 17 times daily in prayer — it is called 'the mother of the Quran' and a complete summary of its message."},
+  {t:"Prophecies Fulfilled", d:"The Quran contains numerous prophecies that were fulfilled — including the defeat of Persia by Rome (30:2-4) and the preservation of Pharaoh's body."},
+  {t:"Intercession on Judgement Day", d:"The Prophet ﷺ said: 'Recite the Quran, for it will come as an intercessor for its companions on the Day of Resurrection.' (Muslim)"},
+  {t:"Every Letter is Rewarded", d:"'Whoever reads a letter from the Book of Allah will receive a Hasanah (good deed). A Hasanah is multiplied by ten.' (Tirmidhi)"},
+  {t:"Guidance for All Humanity", d:"Though revealed in Arabic, the Quran is a universal message — translated into virtually every major language in the world."},
+  {t:"Light in Darkness", d:"'This Quran guides to that which is most suitable.' (17:9) — It illuminates the moral and spiritual path in every era."},
+  {t:"The Living Miracle", d:"Every prophet was given miracles for their time. The Quran is Muhammad's ﷺ eternal miracle — it grows in relevance with every generation."},
+  {t:"Mention of Jesus & Mary", d:"Jesus (Isa عليه السلام) is mentioned 25 times. Mary (Maryam رضي الله عنها) has an entire chapter — she is mentioned more than in the New Testament."},
+  {t:"Protection from Evil", d:"Specific verses like Ayatul Kursi (2:255) and the last two Surahs are reported to offer protection when recited."},
+  {t:"Surah Ya-Sin: Heart of Quran", d:"The Prophet ﷺ said: 'Everything has a heart, and the heart of the Quran is Ya-Sin.' (Tirmidhi)"},
+  {t:"Consistent Oral Tradition", d:"The Quran has been transmitted through an unbroken chain (Isnad) of memorisers from the Prophet ﷺ to today — unlike any other scripture."},
+  {t:"The Night of Power", d:"It was revealed on Laylatul Qadr — the Night of Power — described as 'better than a thousand months.' (97:3)"},
+  {t:"Beauty in Recitation", d:"The science of Tajweed (rules of recitation) preserves the exact pronunciation as taught by the Prophet ﷺ himself."},
+  {t:"Eternal Relevance", d:"No matter the century, culture, or crisis — the Quran's guidance speaks directly to every human condition. It is timeless because it is divine."},
+];
+
+// ─── RENDER FUNCTIONS ───────────────────────────────────
+function renderPopular(){
+  const grid = document.getElementById('popularGrid');
+  POPULAR_AYAHS.forEach(a => {
+    const card = document.createElement('div');
+    card.className = 'ayah-card';
+    card.innerHTML = `
+      <div class="ayah-ref">${a.ref} — ${a.surah}</div>
+      <div class="ayah-arabic">${a.arabic}</div>
+      <div class="ayah-english">"${a.english}"</div>
+      <div class="ayah-number">﴿${a.ref.split(':')[1]}﴾</div>
+    `;
+    card.onclick = () => openAyah(a.ref);
+    grid.appendChild(card);
+  });
+}
+
+function renderSpecialities(){
+  const grid = document.getElementById('specGrid');
+  SPECIALITIES.forEach((s, i) => {
+    const el = document.createElement('div');
+    el.className = 'spec-item';
+    el.innerHTML = `<div class="spec-num">${i+1}</div><div class="spec-text"><strong>${s.t}</strong>${s.d}</div>`;
+    grid.appendChild(el);
+  });
+}
+
+// ─── SEARCH (Keep this as is) ───────────────────────────
+document.getElementById('searchInput').addEventListener('keydown', e => {
+  if(e.key === 'Enter') searchAyah();
+});
+
+function searchAyah(){
+  const val = document.getElementById('searchInput').value.trim();
+  const match = val.match(/^(\d+)\s*[:\-]\s*(\d+)$/);
+  if(!match){ alert('Please enter a valid format like  91:4  or  2:255'); return; }
+  openAyah(match[1] + ':' + match[2]);
+}
+
+// ─── MODAL (UPDATED FOR MALAYALAM API) ──────────────────
+async function openAyah(ref){
+  const [s, a] = ref.split(':').map(Number);
+  const surahName = SURAH_NAMES[s] || ('Surah ' + s);
+  
+  document.getElementById('modalRef').textContent = 'Surah ' + s + ', Ayah ' + a;
+  document.getElementById('modalSurah').textContent = surahName;
+  document.getElementById('modalBody').innerHTML = '<div class="modal-loading"><div class="spinner-gold"></div>Fetching ayah…</div>';
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  try {
+    // We now fetch three things: Arabic, English, and Malayalam (ml.abdulhameed)
+    const [arabicRes, engRes, mlRes] = await Promise.all([
+      fetch(`https://api.alquran.cloud/v1/ayah/${s}:${a}/ar.alafasy`),
+      fetch(`https://api.alquran.cloud/v1/ayah/${s}:${a}/en.sahih`),
+      fetch(`https://api.alquran.cloud/v1/ayah/${s}:${a}/ml.abdulhameed`)
+    ]);
+
+    const [arabicData, engData, mlData] = await Promise.all([
+      arabicRes.json(), 
+      engRes.json(),
+      mlRes.json()
+    ]);
+
+    const arabicText = arabicData.data?.text || '—';
+    const engText    = engData.data?.text    || '—';
+    const mlText     = mlData.data?.text     || 'വിവർത്തനം ലഭ്യമല്ല'; // Fallback if ML fails
+
+    document.getElementById('modalBody').innerHTML = `
+      <div class="arabic-text">${arabicText}</div>
+      <div class="translation-block">
+        <div class="trans-label"><span class="trans-flag">🇬🇧</span> English Translation</div>
+        <div class="trans-text">"${engText}"</div>
+      </div>
+      <div class="translation-block">
+        <div class="trans-label"><span class="trans-flag">🇮🇳</span> Malayalam Translation (മലയാളം)</div>
+        <div class="trans-text ml">${mlText}</div>
+      </div>
+    `;
+  } catch(e) {
+    console.error(e);
+    document.getElementById('modalBody').innerHTML = `<div class="error-box">Could not load this ayah. Please check your internet connection or try again.</div>`;
+  }
+}
+
+function closeModal(e){
+  if(e.target === document.getElementById('modalOverlay')) closeModalDirect();
+}
+function closeModalDirect(){
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModalDirect(); });
+
+// ─── 99 NAMES OF ALLAH ────────────────────────────────
+const NAMES_99 = [
+  {id:1,name_arabic:"اللَّهُ",transliteration:"Allah",meaning:"The One God — the proper name of the Divine, encompassing all attributes of perfection",quranic_reference:"2:255",verse_snippet:"Allah — there is no deity except Him, the Ever-Living, the Sustainer of existence.",spiritual_reflection:"Anchor every intention in His name. Begin all deeds saying Bismillah, making your life a continuous act of worship."},
+  {id:2,name_arabic:"الرَّحْمَٰنُ",transliteration:"Ar-Rahman",meaning:"The Most Gracious — whose mercy encompasses all creation unconditionally",quranic_reference:"1:1",verse_snippet:"In the name of Allah, the Most Gracious, the Most Merciful.",spiritual_reflection:"Extend grace freely to all people without conditions, just as rain falls on every field regardless of who owns it."},
+  {id:3,name_arabic:"الرَّحِيمُ",transliteration:"Ar-Rahim",meaning:"The Most Merciful — whose mercy is specifically directed toward the believers",quranic_reference:"33:43",verse_snippet:"And He is ever Merciful to the believers.",spiritual_reflection:"Show deep, lasting compassion to those around you — especially family — with patience and forgiveness after every mistake."},
+  {id:4,name_arabic:"الْمَلِكُ",transliteration:"Al-Malik",meaning:"The King — the absolute sovereign and ruler of all creation, without partner or rival",quranic_reference:"59:23",verse_snippet:"He is Allah, the Sovereign, the Pure.",spiritual_reflection:"Release the need to control others. True authority belongs to Allah alone; lead with service, not domination."},
+  {id:5,name_arabic:"الْقُدُّوسُ",transliteration:"Al-Quddus",meaning:"The Most Pure — utterly free from every deficiency, fault, or imperfection",quranic_reference:"59:23",verse_snippet:"He is Allah, the Sovereign, the Pure.",spiritual_reflection:"Purify your heart daily through repentance and dhikr. Guard your tongue, eyes, and intentions from every impurity."},
+  {id:6,name_arabic:"السَّلَامُ",transliteration:"As-Salam",meaning:"The Source of Peace — free from all flaws, who bestows safety and tranquility",quranic_reference:"59:23",verse_snippet:"He is Allah, the Giver of Peace.",spiritual_reflection:"Be a source of peace wherever you go. Let those in your presence feel safe, calm, and unconditionally accepted."},
+  {id:7,name_arabic:"الْمُؤْمِنُ",transliteration:"Al-Mu'min",meaning:"The Granter of Security — who bestows faith and protects servants from fear",quranic_reference:"59:23",verse_snippet:"He is Allah, the Granter of Security.",spiritual_reflection:"Be trustworthy in every word and promise. People should feel secure in your honesty and never fear your harm."},
+  {id:8,name_arabic:"الْمُهَيْمِنُ",transliteration:"Al-Muhaymin",meaning:"The Guardian — who watches, protects, and preserves all things",quranic_reference:"59:23",verse_snippet:"He is Allah, the Dominant over all.",spiritual_reflection:"Watch over those in your care with attentiveness and protection, guarding their dignity, needs, and wellbeing faithfully."},
+  {id:9,name_arabic:"الْعَزِيزُ",transliteration:"Al-Aziz",meaning:"The Almighty — invincible, incomparable, and never overcome by any force",quranic_reference:"59:23",verse_snippet:"He is Allah, the Almighty, the Compeller, the Superior.",spiritual_reflection:"Draw strength from Allah in hardship. Never bow to injustice or compromise your values under social pressure."},
+  {id:10,name_arabic:"الْجَبَّارُ",transliteration:"Al-Jabbar",meaning:"The Compeller — who mends what is broken and compels all things to His will",quranic_reference:"59:23",verse_snippet:"He is Allah, the Compeller, the Superior.",spiritual_reflection:"Help repair broken hearts, broken homes, and broken relationships. Be an agent of restoration and healing in your community."},
+  {id:11,name_arabic:"الْمُتَكَبِّرُ",transliteration:"Al-Mutakabbir",meaning:"The Supreme in Greatness — who rightfully possesses all majesty above every creation",quranic_reference:"59:23",verse_snippet:"He is Allah, the Superior, exalted above whatever they associate with Him.",spiritual_reflection:"Crush arrogance within yourself. Greatness belongs only to Allah; humility before Him and others is the believer's crown."},
+  {id:12,name_arabic:"الْخَالِقُ",transliteration:"Al-Khaliq",meaning:"The Creator — who brings all things into existence from nothing",quranic_reference:"59:24",verse_snippet:"He is Allah, the Creator, the Inventor, the Fashioner.",spiritual_reflection:"Use your God-given creativity purposefully. Build, write, and craft in ways that benefit others and glorify the Creator."},
+  {id:13,name_arabic:"الْبَارِئُ",transliteration:"Al-Bari'",meaning:"The Originator — who creates with perfect distinction between all things",quranic_reference:"59:24",verse_snippet:"He is Allah, the Creator, the Inventor, the Fashioner.",spiritual_reflection:"Appreciate the uniqueness Allah placed in you and every person. Never reduce anyone to a stereotype or comparison."},
+  {id:14,name_arabic:"الْمُصَوِّرُ",transliteration:"Al-Musawwir",meaning:"The Fashioner — who gives every creation its unique shape and beautiful form",quranic_reference:"59:24",verse_snippet:"He is Allah, the Fashioner; to Him belong the best names.",spiritual_reflection:"Reflect on the miracle of your own body in gratitude. Present yourself and your work with intentional beauty."},
+  {id:15,name_arabic:"الْغَفَّارُ",transliteration:"Al-Ghaffar",meaning:"The Repeatedly Forgiving — who forgives sins again and again, no matter how often",quranic_reference:"20:82",verse_snippet:"Indeed, I am the Perpetual Forgiver of whoever repents and believes.",spiritual_reflection:"Never withhold forgiveness from those who sincerely apologise. Forgive repeatedly, as your own sins require Allah's repeated forgiveness."},
+  {id:16,name_arabic:"الْقَهَّارُ",transliteration:"Al-Qahhar",meaning:"The Subduer — who overpowers all things and all beings completely",quranic_reference:"13:16",verse_snippet:"Say: Allah is the Creator of all things, and He is the Prevailing.",spiritual_reflection:"Subdue your own ego, desires, and anger before they subdue you. Self-mastery is the believer's greatest inner conquest."},
+  {id:17,name_arabic:"الْوَهَّابُ",transliteration:"Al-Wahhab",meaning:"The Bestower — who gives freely, abundantly, without expectation of return",quranic_reference:"3:8",verse_snippet:"Our Lord, grant us from Yourself mercy. Indeed, You are the Bestower.",spiritual_reflection:"Give generously without waiting for thanks or return. Let your charity, time, and love flow freely like a gift, not a loan."},
+  {id:18,name_arabic:"الرَّزَّاقُ",transliteration:"Ar-Razzaq",meaning:"The All-Provider — who provides sustenance for every creature without interruption",quranic_reference:"51:58",verse_snippet:"Indeed, it is Allah who is the Provider, the firm possessor of strength.",spiritual_reflection:"Trust Allah completely for your provision. Work with full effort, then release anxiety — your rizq is guaranteed and written."},
+  {id:19,name_arabic:"الْفَتَّاحُ",transliteration:"Al-Fattah",meaning:"The Opener — who opens all doors, resolves every difficulty, and grants victory",quranic_reference:"34:26",verse_snippet:"Say: Our Lord will bring us together, then judge between us in truth.",spiritual_reflection:"Never give up on a closed door. Every locked path has an appointed opener — make du'a, persist, and trust Allah's timing."},
+  {id:20,name_arabic:"الْعَلِيمُ",transliteration:"Al-Alim",meaning:"The All-Knowing — who has complete, perfect knowledge of everything manifest and hidden",quranic_reference:"2:29",verse_snippet:"And He is knowing of all things.",spiritual_reflection:"Act with integrity in private as in public. Allah sees every hidden deed, secret intention, and whispered thought — always."},
+  {id:21,name_arabic:"الْقَابِضُ",transliteration:"Al-Qabid",meaning:"The Withholder — who constricts provision and souls with perfect wisdom",quranic_reference:"2:245",verse_snippet:"Allah withholds and extends, and to Him you will be returned.",spiritual_reflection:"During times of constriction, trust it is purposeful. Hardship is a sacred narrowing that builds depth, gratitude, and spiritual strength."},
+  {id:22,name_arabic:"الْبَاسِطُ",transliteration:"Al-Basit",meaning:"The Expander — who expands provision, hearts, and ease according to His wisdom",quranic_reference:"2:245",verse_snippet:"Allah withholds and extends, and to Him you will be returned.",spiritual_reflection:"In times of ease and abundance, open your hands to others. Expansion is a divine invitation to be generous, not possessive."},
+  {id:23,name_arabic:"الْخَافِضُ",transliteration:"Al-Khafid",meaning:"The Humbler — who lowers the arrogant and the oppressors by His justice",quranic_reference:"56:3",verse_snippet:"It will bring down and raise up.",spiritual_reflection:"Never mock or demean the vulnerable. Remember that positions are temporary — humility protects you from Allah's humbling decree."},
+  {id:24,name_arabic:"الرَّافِعُ",transliteration:"Ar-Rafi'",meaning:"The Exalter — who raises in rank those who are humble, faithful, and sincere",quranic_reference:"56:3",verse_snippet:"It will bring down and raise up.",spiritual_reflection:"Elevate others with your words and actions. Praise people sincerely, uplift the overlooked, and Allah will raise your own station."},
+  {id:25,name_arabic:"الْمُعِزُّ",transliteration:"Al-Mu'izz",meaning:"The Honourer — who grants honour and dignity to whomever He wills",quranic_reference:"3:26",verse_snippet:"You give dominion to whom You will and You honour whom You will.",spiritual_reflection:"Seek honour only through obedience to Allah. Fame from people is fleeting; honour written by Allah in the heavens is eternal."},
+  {id:26,name_arabic:"الْمُذِلُّ",transliteration:"Al-Mudhill",meaning:"The Humiliator — who brings disgrace upon the arrogant and the unjust",quranic_reference:"3:26",verse_snippet:"You honour whom You will and You humble whom You will. In Your hand is all good.",spiritual_reflection:"Fear the disgrace that comes from disobeying Allah. True humiliation is spiritual — a heart disconnected from its Creator."},
+  {id:27,name_arabic:"السَّمِيعُ",transliteration:"As-Sami'",meaning:"The All-Hearing — who hears every sound, whisper, and secret thought in creation",quranic_reference:"2:256",verse_snippet:"And Allah is All-Hearing, All-Knowing.",spiritual_reflection:"Listen deeply to others. Give your full presence when people speak — reflect Allah's hearing by making every person feel truly heard."},
+  {id:28,name_arabic:"الْبَصِيرُ",transliteration:"Al-Basir",meaning:"The All-Seeing — who sees everything in existence with perfect, unlimited sight",quranic_reference:"4:58",verse_snippet:"Indeed, Allah is ever Hearing and Seeing.",spiritual_reflection:"Look for the good in people and situations. Sharpen your spiritual sight to see Allah's signs in every face and moment."},
+  {id:29,name_arabic:"الْحَكَمُ",transliteration:"Al-Hakam",meaning:"The Judge — whose verdict is final, perfectly just, and beyond all dispute",quranic_reference:"22:69",verse_snippet:"Allah will judge between you on the Day of Resurrection.",spiritual_reflection:"Leave ultimate judgment to Allah. Release the urge to condemn others — your role is to advise with wisdom, not to sentence souls."},
+  {id:30,name_arabic:"الْعَدْلُ",transliteration:"Al-Adl",meaning:"The Utterly Just — perfectly equitable in all His judgments and decrees",quranic_reference:"6:115",verse_snippet:"And the word of your Lord has been fulfilled in truth and in justice.",spiritual_reflection:"Stand firmly for justice even when it is costly. Be fair in your dealings, your judgments, and your distribution of time and resources."},
+  {id:31,name_arabic:"اللَّطِيفُ",transliteration:"Al-Latif",meaning:"The Subtle and Kind — aware of the finest details, acts with invisible gentleness",quranic_reference:"6:103",verse_snippet:"No vision can encompass Him, but He encompasses all vision. He is the Subtle, the Aware.",spiritual_reflection:"Cultivate gentleness in your approach. Address people's needs quietly, without fanfare, noticing what others miss."},
+  {id:32,name_arabic:"الْخَبِيرُ",transliteration:"Al-Khabir",meaning:"The All-Aware — who has complete inner knowledge of all things, seen and unseen",quranic_reference:"6:18",verse_snippet:"And He is the Subtle, the Aware.",spiritual_reflection:"Develop deep understanding before you speak or act. Seek knowledge of people's inner realities before making assumptions."},
+  {id:33,name_arabic:"الْحَلِيمُ",transliteration:"Al-Halim",meaning:"The Forbearing — who withholds punishment with perfect patience despite every sin",quranic_reference:"2:235",verse_snippet:"Know that Allah knows what is in yourselves. And know that Allah is Forgiving and Forbearing.",spiritual_reflection:"Develop patience with the flaws and mistakes of others. Pause before reacting in anger — forbearance is the mark of true maturity."},
+  {id:34,name_arabic:"الْعَظِيمُ",transliteration:"Al-Azim",meaning:"The Magnificent — of incomprehensible greatness, might, and grandeur",quranic_reference:"2:255",verse_snippet:"And He is the Most High, the Most Great.",spiritual_reflection:"Maintain awe of Allah in your heart. Let His magnificence humble you before people, making you gentle and free from pride."},
+  {id:35,name_arabic:"الْغَفُورُ",transliteration:"Al-Ghafur",meaning:"The All-Forgiving — who forgives abundantly and covers the sins of His servants",quranic_reference:"35:28",verse_snippet:"Indeed, Allah is Exalted in Might and Forgiving.",spiritual_reflection:"Never despair of forgiveness no matter how great your sin. Return to Allah sincerely and know He covers what shames you."},
+  {id:36,name_arabic:"الشَّكُورُ",transliteration:"Ash-Shakur",meaning:"The Most Appreciative — who rewards even the smallest good deed abundantly",quranic_reference:"35:30",verse_snippet:"Indeed He is Forgiving and Appreciative.",spiritual_reflection:"Acknowledge and thank the goodness others show you. Gratitude multiplies blessings and mirrors Allah's own appreciation."},
+  {id:37,name_arabic:"الْعَلِيُّ",transliteration:"Al-Ali",meaning:"The Most High — exalted above all things in His essence, attributes, and power",quranic_reference:"4:34",verse_snippet:"Indeed, Allah is ever Exalted and Grand.",spiritual_reflection:"Elevate your aspirations and your character. Seek the highest station — nearness to Allah — rather than recognition from people."},
+  {id:38,name_arabic:"الْكَبِيرُ",transliteration:"Al-Kabir",meaning:"The Most Great — incomprehensibly great in every aspect beyond all human measure",quranic_reference:"13:9",verse_snippet:"The Knower of the unseen and the witnessed, the Grand, the Exalted.",spiritual_reflection:"Put the greatness of your problems in perspective. When Allah is your greatest concern, every other burden shrinks in proportion."},
+  {id:39,name_arabic:"الْحَفِيظُ",transliteration:"Al-Hafiz",meaning:"The Preserver — who guards and protects all things from loss and destruction",quranic_reference:"11:57",verse_snippet:"Indeed my Lord is Guardian over all things.",spiritual_reflection:"Guard your relationships, your duties, and your promises. Be someone whose word, time, and presence is a reliable shelter."},
+  {id:40,name_arabic:"الْمُقِيتُ",transliteration:"Al-Muqit",meaning:"The Sustainer — who nourishes, strengthens, and sustains every living creature",quranic_reference:"4:85",verse_snippet:"And ever is Allah, over all things, a Keeper.",spiritual_reflection:"Nourish those around you — spiritually, emotionally, physically. A believer sustains others even from their own limited portions."},
+  {id:41,name_arabic:"الْحَسِيبُ",transliteration:"Al-Hasib",meaning:"The Reckoner — who takes complete and sufficient account of all things",quranic_reference:"4:6",verse_snippet:"And sufficient is Allah as Accountant.",spiritual_reflection:"Live as if today is your last day of account. Let self-accountability in private spare you from public disgrace on Judgment Day."},
+  {id:42,name_arabic:"الْجَلِيلُ",transliteration:"Al-Jalil",meaning:"The Majestic — possessing absolute and incomparable grandeur and glory",quranic_reference:"55:27",verse_snippet:"And there will remain the Face of your Lord, Owner of Majesty and Honour.",spiritual_reflection:"Approach worship with reverence and awe. Recognising Allah's majesty transforms prayer from ritual into a sacred encounter."},
+  {id:43,name_arabic:"الْكَرِيمُ",transliteration:"Al-Karim",meaning:"The Most Generous — of boundless nobility, giving without measure and without limit",quranic_reference:"82:6",verse_snippet:"O mankind, what has deceived you concerning your Lord, the Generous?",spiritual_reflection:"Be generous beyond what is expected of you. Generosity of wealth, time, and kind words is the character of the noble soul."},
+  {id:44,name_arabic:"الرَّقِيبُ",transliteration:"Ar-Raqib",meaning:"The Watchful — who constantly and perfectly observes all things at every moment",quranic_reference:"5:117",verse_snippet:"And You are Witness over all things.",spiritual_reflection:"Behave in your most private moments as you would before a King. Allah's watchfulness is a gift — it keeps you aligned."},
+  {id:45,name_arabic:"الْمُجِيبُ",transliteration:"Al-Mujib",meaning:"The Responsive — who answers every call and supplication of His servants",quranic_reference:"11:61",verse_snippet:"Indeed, my Lord is near and responsive.",spiritual_reflection:"Never stop making du'a even when answers seem delayed. Allah responds to every call — sometimes with what you need, not what you want."},
+  {id:46,name_arabic:"الْوَاسِعُ",transliteration:"Al-Wasi'",meaning:"The All-Encompassing — of boundless capacity, knowledge, mercy, and provision",quranic_reference:"2:115",verse_snippet:"So wherever you turn, there is the Face of Allah. Indeed, Allah is All-Encompassing and Knowing.",spiritual_reflection:"Expand your heart to hold others' differences. Like Allah's mercy which encompasses all, broaden your compassion without borders."},
+  {id:47,name_arabic:"الْحَكِيمُ",transliteration:"Al-Hakim",meaning:"The All-Wise — who acts with perfect wisdom in every decree and every creation",quranic_reference:"2:32",verse_snippet:"Exalted are You; indeed You are the Knowing, the Wise.",spiritual_reflection:"Trust that behind every decree — pleasant or painful — is flawless wisdom. Patience with Allah's plan is itself a form of wisdom."},
+  {id:48,name_arabic:"الْوَدُودُ",transliteration:"Al-Wadud",meaning:"The Loving — who loves His faithful servants with deep, pure, consistent love",quranic_reference:"11:90",verse_snippet:"Indeed, my Lord is Merciful and Loving.",spiritual_reflection:"Love people sincerely and consistently, not based on what they give you. Reflect Allah's love by loving even those who cannot return it."},
+  {id:49,name_arabic:"الْمَجِيدُ",transliteration:"Al-Majid",meaning:"The All-Glorious — of perfect glory, honour, and infinite noble attributes",quranic_reference:"11:73",verse_snippet:"Indeed, He is Praiseworthy and Glorious.",spiritual_reflection:"Carry yourself with quiet dignity in all circumstances. The believer's inner nobility shines without the need for external validation."},
+  {id:50,name_arabic:"الْبَاعِثُ",transliteration:"Al-Ba'ith",meaning:"The Resurrector — who raises the dead and sends forth messengers",quranic_reference:"22:7",verse_snippet:"And that the Hour is coming — no doubt about it — and that Allah will resurrect those in the graves.",spiritual_reflection:"Let the certainty of resurrection motivate every righteous act. What you plant in this life will be harvested in the next."},
+  {id:51,name_arabic:"الشَّهِيدُ",transliteration:"Ash-Shahid",meaning:"The Witness — who is present and bears witness over all things at all times",quranic_reference:"22:17",verse_snippet:"Indeed, Allah is Witness over all things.",spiritual_reflection:"Be a living witness to justice. Speak the truth even when silent is easier — your testimony in this life matters before Allah."},
+  {id:52,name_arabic:"الْحَقُّ",transliteration:"Al-Haqq",meaning:"The Truth — the only absolute reality; all else exists only through His permission",quranic_reference:"22:6",verse_snippet:"That is because Allah is the Truth and that it is He who gives life to the dead.",spiritual_reflection:"Ground yourself in truth in every word you speak. The believer's mark is that their speech, intent, and action are one and the same."},
+  {id:53,name_arabic:"الْوَكِيلُ",transliteration:"Al-Wakil",meaning:"The Trustee — the perfect guardian in whom all affairs are safely entrusted",quranic_reference:"3:173",verse_snippet:"Sufficient for us is Allah, and He is the best Disposer of affairs.",spiritual_reflection:"After effort, surrender your outcomes to Allah completely. Tawakkul — true reliance — brings peace that no amount of control ever can."},
+  {id:54,name_arabic:"الْقَوِيُّ",transliteration:"Al-Qawi",meaning:"The All-Strong — of unlimited, perfect, and inexhaustible power",quranic_reference:"22:40",verse_snippet:"Indeed, Allah is Powerful and Exalted in Might.",spiritual_reflection:"Draw on divine strength in moments of weakness. Acknowledge your own limitations and watch how Allah's power fills the gap."},
+  {id:55,name_arabic:"الْمَتِينُ",transliteration:"Al-Matin",meaning:"The Firm — of unshakeable strength, steadfastness, and absolute firmness",quranic_reference:"51:58",verse_snippet:"Indeed, it is Allah who is the Provider, the firm possessor of strength.",spiritual_reflection:"Build a firm character that does not bend under pressure. Your stability in trials becomes a sanctuary for weaker souls around you."},
+  {id:56,name_arabic:"الْوَلِيُّ",transliteration:"Al-Wali",meaning:"The Protecting Friend — the close guardian, protector, and helper of the believers",quranic_reference:"42:28",verse_snippet:"And He is the Protecting Friend, the Praiseworthy.",spiritual_reflection:"Be a loyal and steadfast friend. Protect others in their absence, support them in difficulty, and never betray their trust."},
+  {id:57,name_arabic:"الْحَمِيدُ",transliteration:"Al-Hamid",meaning:"The Praiseworthy — who is deserving of all praise, gratitude, and glorification",quranic_reference:"14:8",verse_snippet:"Indeed, Allah is Free of need and Praiseworthy.",spiritual_reflection:"Begin and end every day with praise. A heart saturated with gratitude is a heart that finds ease even in the most difficult times."},
+  {id:58,name_arabic:"الْمُحْصِيُ",transliteration:"Al-Muhsi",meaning:"The All-Enumerating — who counts and records all things without missing anything",quranic_reference:"19:94",verse_snippet:"He has enumerated them and counted them a thorough counting.",spiritual_reflection:"Be meticulous in your duties. Account for your time, words, and deeds as Allah accounts for them — with precision and care."},
+  {id:59,name_arabic:"الْمُبْدِئُ",transliteration:"Al-Mubdi",meaning:"The Originator — who begins all creation from nothing for the first time",quranic_reference:"10:34",verse_snippet:"Say: Is there of your partners any who begins creation then repeats it?",spiritual_reflection:"Embrace new beginnings without fear. Every fresh start is a gift from the Originator — meet it with courage and full presence."},
+  {id:60,name_arabic:"الْمُعِيدُ",transliteration:"Al-Mu'id",meaning:"The Restorer — who will bring back creation after death as He first originated it",quranic_reference:"10:34",verse_snippet:"Say: Allah begins creation then repeats it.",spiritual_reflection:"Trust that what seems lost can be restored by Allah. No broken relationship, health, or hope is beyond His power to return."},
+  {id:61,name_arabic:"الْمُحْيِي",transliteration:"Al-Muhyi",meaning:"The Giver of Life — who gives life to all things and revives the dead",quranic_reference:"30:50",verse_snippet:"So observe the effects of the mercy of Allah — how He gives life to the earth after its lifelessness.",spiritual_reflection:"Be a source of life in your community — revive dead spirits with encouragement, dead spaces with care, dead causes with action."},
+  {id:62,name_arabic:"الْمُمِيتُ",transliteration:"Al-Mumit",meaning:"The Creator of Death — who ordains death for every living creature in its time",quranic_reference:"3:156",verse_snippet:"And it is Allah who gives life and causes death, and Allah is Seeing of what you do.",spiritual_reflection:"Let the certainty of death sharpen your priorities. What will matter in your final breath? Live toward that today, without delay."},
+  {id:63,name_arabic:"الْحَيُّ",transliteration:"Al-Hayy",meaning:"The Ever-Living — who possesses perfect, eternal life that was never caused",quranic_reference:"2:255",verse_snippet:"Allah — there is no deity except Him, the Ever-Living, the Sustainer of existence.",spiritual_reflection:"Nourish your spiritual life daily. A believer's soul must be constantly fed with prayer, remembrance, and righteous deeds to stay alive."},
+  {id:64,name_arabic:"الْقَيُّومُ",transliteration:"Al-Qayyum",meaning:"The Self-Subsisting — who maintains and sustains all of creation continuously",quranic_reference:"2:255",verse_snippet:"Allah — there is no deity except Him, the Ever-Living, the Sustainer of existence.",spiritual_reflection:"Be someone others can depend on. Reliability, consistency, and showing up for people reflects a small mirror of Al-Qayyum."},
+  {id:65,name_arabic:"الْوَاجِدُ",transliteration:"Al-Wajid",meaning:"The Finder — who lacks nothing and finds all that He wills instantaneously",quranic_reference:"38:44",verse_snippet:"Indeed, We found him patient. What an excellent servant! Indeed, he was one repeatedly turning back to Allah.",spiritual_reflection:"Be content with what you have. The wealthy soul is not the richest in possessions but the most grateful for what has already been found."},
+  {id:66,name_arabic:"الْمَاجِدُ",transliteration:"Al-Majid",meaning:"The Noble and Glorious — of boundless generosity and perfect nobility",quranic_reference:"85:15",verse_snippet:"Owner of the Throne, the Glorious.",spiritual_reflection:"Act nobly even when no one is watching. True character is what you do in private — and Allah sees every noble hidden deed."},
+  {id:67,name_arabic:"الْوَاحِدُ",transliteration:"Al-Wahid",meaning:"The One — unique, singular, having no partner or equal in any attribute",quranic_reference:"13:16",verse_snippet:"Say: Allah is Creator of all things, and He is the One, the Prevailing.",spiritual_reflection:"Unify your own heart around one purpose — pleasing Allah. A divided heart scattered across worldly goals finds no rest or clarity."},
+  {id:68,name_arabic:"الْأَحَدُ",transliteration:"Al-Ahad",meaning:"The Uniquely One — indivisible, incomparable, absolutely without likeness",quranic_reference:"112:1",verse_snippet:"Say: He is Allah, the One.",spiritual_reflection:"Dedicate yourself wholly to one Master. Half-hearted devotion divides your energy; absolute sincerity for Allah multiplies your peace."},
+  {id:69,name_arabic:"الصَّمَدُ",transliteration:"As-Samad",meaning:"The Eternal Refuge — the self-sufficient Master upon whom all creation depends",quranic_reference:"112:2",verse_snippet:"Allah, the Eternal Refuge.",spiritual_reflection:"Turn to Allah first in every need — before people, before plans, before panic. He is the only refuge that will never disappoint."},
+  {id:70,name_arabic:"الْقَادِرُ",transliteration:"Al-Qadir",meaning:"The All-Powerful — completely capable over every single thing without exception",quranic_reference:"36:81",verse_snippet:"Is not He who created the heavens and earth Able to create the likes of them? Yes, and He is the Knowing Creator.",spiritual_reflection:"Believe that no situation is impossible for Allah to change. Hopelessness is only for those who forget they are in the hands of Al-Qadir."},
+  {id:71,name_arabic:"الْمُقْتَدِرُ",transliteration:"Al-Muqtadir",meaning:"The Omnipotent — who exercises His power in whichever way He wills",quranic_reference:"54:55",verse_snippet:"In a seat of honour near a Sovereign, Perfect in Ability.",spiritual_reflection:"Trust that Allah's power is always at work even in what appears as delay or stillness. His timing and methods are flawless."},
+  {id:72,name_arabic:"الْمُقَدِّمُ",transliteration:"Al-Muqaddim",meaning:"The Expediter — who brings forward whom He wills and gives priority as He sees fit",quranic_reference:"50:28",verse_snippet:"My word will not be changed, and never will I be unjust to the servants.",spiritual_reflection:"Welcome being passed over sometimes. Allah advances whom He wills. Your appointment to any station will come at exactly the right moment."},
+  {id:73,name_arabic:"الْمُؤَخِّرُ",transliteration:"Al-Mu'akhkhir",meaning:"The Delayer — who postpones according to His wisdom, never arbitrarily",quranic_reference:"71:4",verse_snippet:"He will delay you for a specified term; indeed, the term of Allah, when it comes, will not be delayed.",spiritual_reflection:"Accept delays with grace. When Allah withholds something you want, trust there is wisdom in the timing you cannot yet see."},
+  {id:74,name_arabic:"الْأَوَّلُ",transliteration:"Al-Awwal",meaning:"The First — who existed before everything, with no beginning before Him",quranic_reference:"57:3",verse_snippet:"He is the First and the Last, the Ascendant and the Intimate.",spiritual_reflection:"Prioritise Allah above everything in your schedule, finances, and attention. What comes first in your day reveals what rules your heart."},
+  {id:75,name_arabic:"الْآخِرُ",transliteration:"Al-Akhir",meaning:"The Last — who will remain after all things cease, with no end after Him",quranic_reference:"57:3",verse_snippet:"He is the First and the Last, the Ascendant and the Intimate.",spiritual_reflection:"Build for eternity, not just for today. Invest in deeds that outlast you — sadaqa jariyah, knowledge shared, and children well raised."},
+  {id:76,name_arabic:"الظَّاهِرُ",transliteration:"Az-Zahir",meaning:"The Manifest — evident through His signs in all of creation, above all things",quranic_reference:"57:3",verse_snippet:"He is the First and the Last, the Ascendant and the Intimate, and He is Knowing of all things.",spiritual_reflection:"See Allah's signs in nature, in events, in your own life. Train your eyes to read the universe as a continuous divine revelation."},
+  {id:77,name_arabic:"الْبَاطِنُ",transliteration:"Al-Batin",meaning:"The Hidden — closer to creation than all else, yet beyond all perception",quranic_reference:"57:3",verse_snippet:"He is the Ascendant and the Intimate, and He is Knowing of all things.",spiritual_reflection:"Cultivate an intimate inner life with Allah. Beyond public worship, develop a private closeness that no one else can see or take away."},
+  {id:78,name_arabic:"الْوَالِي",transliteration:"Al-Wali",meaning:"The Governor — who has supreme authority over and governs all affairs of creation",quranic_reference:"13:11",verse_snippet:"And they will not find for themselves besides Allah any protector or helper.",spiritual_reflection:"Surrender control of outcomes to the true Governor. Your role is sincere effort; His role is to manage what lies beyond your hands."},
+  {id:79,name_arabic:"الْمُتَعَالِي",transliteration:"Al-Muta'ali",meaning:"The Self-Exalted — supremely and infinitely exalted above all things of creation",quranic_reference:"13:9",verse_snippet:"The Knower of the unseen and the witnessed, the Grand, the Exalted.",spiritual_reflection:"Humble yourself before Allah's infinite transcendence. Your greatest wisdom is to know how little you know and how great He is."},
+  {id:80,name_arabic:"الْبَرُّ",transliteration:"Al-Barr",meaning:"The Source of Goodness — the One of infinite kindness and benevolence toward creation",quranic_reference:"52:28",verse_snippet:"Indeed, we used to supplicate Him before. Indeed, it is He who is the Beneficent, the Merciful.",spiritual_reflection:"Be good to people beyond what they deserve or expect. Goodness without agenda, freely given, is the closest human reflection of Al-Barr."},
+  {id:81,name_arabic:"التَّوَّابُ",transliteration:"At-Tawwab",meaning:"The Ever-Relenting — who continually accepts repentance and turns toward the penitent",quranic_reference:"2:37",verse_snippet:"And He is the Accepting of Repentance, the Merciful.",spiritual_reflection:"Return to Allah after every fall without hesitation or shame. Tawbah is the believer's most powerful reset — use it without limit."},
+  {id:82,name_arabic:"الْمُنْتَقِمُ",transliteration:"Al-Muntaqim",meaning:"The Avenger — who exacts just retribution from those who persist in oppression",quranic_reference:"32:22",verse_snippet:"And who is more unjust than one who is reminded of the verses of his Lord but turns from them? Indeed We will take retribution.",spiritual_reflection:"Leave injustice in Allah's hands. When you have been wronged, make du'a and move forward — divine justice is far more complete than yours."},
+  {id:83,name_arabic:"الْعَفُوُّ",transliteration:"Al-Afuw",meaning:"The Pardoner — who completely erases sins as if they never occurred",quranic_reference:"4:99",verse_snippet:"And ever is Allah Pardoning and Forgiving.",spiritual_reflection:"Ask for pardon sincerely in every prayer. And offer pardon to others even before they ask — true forgiveness erases, it does not merely tolerate."},
+  {id:84,name_arabic:"الرَّؤُوفُ",transliteration:"Ar-Ra'uf",meaning:"The Most Compassionate — of extreme tenderness and profound compassion",quranic_reference:"3:30",verse_snippet:"And Allah warns you of Himself, and Allah is Kind to His servants.",spiritual_reflection:"Be tender with those who are struggling. Harshness in da'wah pushes people away; compassion is the door through which hearts open."},
+  {id:85,name_arabic:"مَالِكُ الْمُلْكِ",transliteration:"Malik-ul-Mulk",meaning:"The Owner of All Sovereignty — who holds absolute dominion over all kingdoms",quranic_reference:"3:26",verse_snippet:"Say: O Allah, Owner of Sovereignty, You give sovereignty to whom You will.",spiritual_reflection:"Never become attached to power, titles, or positions — they are borrowed from the only true Owner. Return them gracefully when asked."},
+  {id:86,name_arabic:"ذُو الْجَلَالِ وَالْإِكْرَامِ",transliteration:"Dhul-Jalali-wal-Ikram",meaning:"The Lord of Majesty and Bounty — who combines awe-inspiring majesty with boundless honour",quranic_reference:"55:27",verse_snippet:"And there will remain the Face of your Lord, Owner of Majesty and Honour.",spiritual_reflection:"Combine reverence with warmth in your relationships. Respect people's dignity without losing the gravity of what you stand for."},
+  {id:87,name_arabic:"الْمُقْسِطُ",transliteration:"Al-Muqsit",meaning:"The Equitable — who acts and judges with perfect impartiality and fairness",quranic_reference:"7:29",verse_snippet:"My Lord has ordered justice.",spiritual_reflection:"Apply the same standards to yourself that you apply to others. Justice begins when you stop making exceptions for your own wrongdoing."},
+  {id:88,name_arabic:"الْجَامِعُ",transliteration:"Al-Jami'",meaning:"The Gatherer — who gathers all of creation on the Day of Judgment as He wills",quranic_reference:"3:9",verse_snippet:"Our Lord, surely You will gather the people for a Day about which there is no doubt.",spiritual_reflection:"Work to unite divided hearts. Reconcile, connect, and bring people together — be a gatherer of goodness in fractured communities."},
+  {id:89,name_arabic:"الْغَنِيُّ",transliteration:"Al-Ghani",meaning:"The Self-Sufficient — who is completely independent of and free from all creation",quranic_reference:"35:15",verse_snippet:"O mankind, you are those in need of Allah, while Allah is the Free of need, the Praiseworthy.",spiritual_reflection:"Reduce your dependency on others' opinions, praise, and validation. True freedom comes from needing only Allah's approval to function."},
+  {id:90,name_arabic:"الْمُغْنِي",transliteration:"Al-Mughni",meaning:"The Enricher — who enriches whomever He wills from His infinite, inexhaustible wealth",quranic_reference:"9:28",verse_snippet:"And if you fear privation, Allah will enrich you from His bounty.",spiritual_reflection:"Be a means of enrichment for others. Share knowledge, wealth, and encouragement freely — when you enrich others, Allah enriches you."},
+  {id:91,name_arabic:"الْمَانِعُ",transliteration:"Al-Mani'",meaning:"The Withholder — who prevents harm, withholds what would be harmful, and protects",quranic_reference:"67:20",verse_snippet:"Who is it that could be an army for you to aid you other than the Most Merciful?",spiritual_reflection:"When a door closes, trust that Allah is protecting you from what lies behind it. A withheld blessing is often a concealed mercy."},
+  {id:92,name_arabic:"الضَّارُّ",transliteration:"Ad-Darr",meaning:"The Distresser — who allows harm and affliction by His will and perfect wisdom",quranic_reference:"6:17",verse_snippet:"And if Allah should touch you with adversity, there is no remover of it except Him.",spiritual_reflection:"In every difficulty, turn inward and ask what lesson Allah is teaching you. Pain under His decree is always purposeful and temporary."},
+  {id:93,name_arabic:"النَّافِعُ",transliteration:"An-Nafi'",meaning:"The Propitious — who creates all benefit and good, the source of all that helps",quranic_reference:"48:11",verse_snippet:"Say: Who then has power over you at all against Allah if He intended for you harm or intended for you benefit?",spiritual_reflection:"Dedicate yourself to being beneficial. The best of people are those who bring the most benefit to others — make this your daily mission."},
+  {id:94,name_arabic:"النُّورُ",transliteration:"An-Nur",meaning:"The Light — who illuminates the heavens and earth and every heart that seeks Him",quranic_reference:"24:35",verse_snippet:"Allah is the Light of the heavens and the earth.",spiritual_reflection:"Let your knowledge and character illuminate the spaces you enter. Be the kind of person who brings clarity, warmth, and hope into dark situations."},
+  {id:95,name_arabic:"الْهَادِي",transliteration:"Al-Hadi",meaning:"The Guide — who guides whoever He wills to the straight path of truth",quranic_reference:"22:54",verse_snippet:"And indeed, Allah is the Guide of those who have believed to a straight path.",spiritual_reflection:"Seek guidance in every decision through istikhara and du'a. And be a guide for others — share what you know with patience and humility."},
+  {id:96,name_arabic:"الْبَدِيعُ",transliteration:"Al-Badi'",meaning:"The Originator of the New — who creates unprecedented things of incomparable beauty",quranic_reference:"2:117",verse_snippet:"Originator of the heavens and the earth. When He decrees a matter, He only says to it: Be, and it is.",spiritual_reflection:"Approach every task with creativity and freshness. Resist the routine that deadens the soul — bring something original to every endeavour."},
+  {id:97,name_arabic:"الْبَاقِي",transliteration:"Al-Baqi",meaning:"The Everlasting — who endures and remains forever while all else perishes",quranic_reference:"28:88",verse_snippet:"Everything will be destroyed except His Face.",spiritual_reflection:"Invest your energy in what endures. Deeds of sincerity, knowledge that is shared, and love that is pure — these outlast every worldly thing."},
+  {id:98,name_arabic:"الْوَارِثُ",transliteration:"Al-Warith",meaning:"The Inheritor — who remains after all things perish and inherits all that was",quranic_reference:"15:23",verse_snippet:"And indeed, it is We who give life and cause death, and We are the Inheritor.",spiritual_reflection:"Hold your possessions loosely. They never truly belonged to you — they are on loan from the ultimate Inheritor. Use them generously while you can."},
+  {id:99,name_arabic:"الرَّشِيدُ",transliteration:"Ar-Rashid",meaning:"The Guide to the Right Path — whose every action is aligned with consummate wisdom",quranic_reference:"18:10",verse_snippet:"Our Lord, grant us from Yourself mercy and prepare for us from our affair right guidance.",spiritual_reflection:"Seek wisdom before action and knowledge before speech. The rashid soul checks their compass daily, corrects course without ego, and walks steadily."}
+];
+
+let currentNameIndex = 0;
+let nameAudio = null;
+let filteredNames = [...NAMES_99];
+
+// Arabic numerals for display
+const toArabicNum = n => String(n).replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+
+function renderNamesGrid(arr){
+  const grid = document.getElementById('asmaGrid');
+  grid.innerHTML = '';
+  if(!arr.length){
+    grid.innerHTML = '<div class="asma-empty">لا نتائج — No names found matching your search.</div>';
+    return;
+  }
+  arr.forEach((name, idx) => {
+    const card = document.createElement('div');
+    card.className = 'name-card';
+    card.innerHTML = `
+      <div class="name-card-num">${name.id}</div>
+      <div class="name-card-arabic">${name.name_arabic}</div>
+      <div class="name-card-trans">${name.transliteration}</div>
+      <div class="name-card-meaning">${name.meaning.split('—')[0].trim()}</div>
+      <div class="name-card-glow"></div>
+    `;
+    card.addEventListener('click', () => openNameModal(idx, arr));
+    grid.appendChild(card);
+  });
+}
+
+function openNameModal(idx, arr){
+  arr = arr || filteredNames;
+  currentNameIndex = idx;
+  const n = arr[idx];
+  stopNameAudio();
+  document.getElementById('nmBadge').textContent = `Name ${n.id} of 99`;
+  document.getElementById('nmArabic').textContent = n.name_arabic;
+  document.getElementById('nmTrans').textContent = n.transliteration;
+  document.getElementById('nmMeaningTag').textContent = n.meaning.split('—')[1]?.trim() || n.meaning;
+  document.getElementById('nmMeaningFull').textContent = n.meaning;
+  document.getElementById('nmRef').textContent = `Quran ${n.quranic_reference}`;
+  document.getElementById('nmSnippet').textContent = '"' + n.verse_snippet + '"';
+  document.getElementById('nmReflection').textContent = n.spiritual_reflection;
+  document.getElementById('nmCounter').textContent = toArabicNum(n.id);
+  document.getElementById('nmPrev').disabled = idx === 0;
+  document.getElementById('nmNext').disabled = idx === arr.length - 1;
+  document.getElementById('namesOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  // store reference
+  document.getElementById('namesOverlay').dataset.arr = JSON.stringify(arr.map(x=>x.id));
+}
+
+function navigateName(dir){
+  const ids = JSON.parse(document.getElementById('namesOverlay').dataset.arr || '[]');
+  const arr = ids.length ? ids.map(id => NAMES_99.find(n=>n.id===id)) : filteredNames;
+  const newIdx = currentNameIndex + dir;
+  if(newIdx >= 0 && newIdx < arr.length) openNameModal(newIdx, arr);
+}
+
+function toggleNameAudio(){
+  const n = filteredNames[currentNameIndex] || NAMES_99[currentNameIndex];
+  if(nameAudio && !nameAudio.paused){
+    stopNameAudio(); return;
+  }
+  // Use browser SpeechSynthesis for pronunciation
+  if('speechSynthesis' in window){
+    const utt = new SpeechSynthesisUtterance(n.transliteration);
+    utt.lang = 'ar-SA'; utt.rate = 0.75; utt.pitch = 1;
+    // Try Arabic voice, fallback to default
+    const voices = window.speechSynthesis.getVoices();
+    const arVoice = voices.find(v => v.lang.startsWith('ar'));
+    if(arVoice) utt.voice = arVoice;
+    utt.onstart = () => {
+      document.getElementById('nmAudioIcon').textContent = '⏸';
+      document.getElementById('nmAudioLabel').textContent = 'Playing…';
+      document.getElementById('nmAudioBtn').classList.add('playing');
+    };
+    utt.onend = utt.onerror = () => {
+      document.getElementById('nmAudioIcon').textContent = '▶';
+      document.getElementById('nmAudioLabel').textContent = 'Listen to Pronunciation';
+      document.getElementById('nmAudioBtn').classList.remove('playing');
+    };
+    window.speechSynthesis.speak(utt);
+  }
+}
+
+function stopNameAudio(){
+  if('speechSynthesis' in window) window.speechSynthesis.cancel();
+  document.getElementById('nmAudioIcon').textContent = '▶';
+  document.getElementById('nmAudioLabel').textContent = 'Listen to Pronunciation';
+  document.getElementById('nmAudioBtn').classList.remove('playing');
+}
+
+function closeNamesModal(e){
+  if(e.target === document.getElementById('namesOverlay')) closeNamesModalDirect();
+}
+function closeNamesModalDirect(){
+  stopNameAudio();
+  document.getElementById('namesOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Search filter
+document.getElementById('asmaSearch').addEventListener('input', function(){
+  const q = this.value.trim().toLowerCase();
+  filteredNames = q
+    ? NAMES_99.filter(n =>
+        n.transliteration.toLowerCase().includes(q) ||
+        n.meaning.toLowerCase().includes(q) ||
+        n.name_arabic.includes(q)
+      )
+    : [...NAMES_99];
+  renderNamesGrid(filteredNames);
+});
+
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape') closeNamesModalDirect();
+  if(document.getElementById('namesOverlay').classList.contains('active')){
+    if(e.key==='ArrowRight') navigateName(1);
+    if(e.key==='ArrowLeft') navigateName(-1);
+  }
+});
+
+// ─── DUAS & ADHKAR DATA ───────────────────────────────
+const DUAS_DATA = [
+  /* ══ RABBANA DUAS (Quranic) ══ */
+  {id:1,type:"Rabbana",category:"Guidance",arabic_text:"رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً ۚ إِنَّكَ أَنتَ الْوَهَّابُ",transliteration:"Rabbanā lā tuzigh qulūbanā ba'da idh hadaytanā wa hab lanā mil ladunka raḥmah, innaka antal-Wahhāb.",english_translation:"Our Lord, do not let our hearts deviate after You have guided us, and grant us from Yourself mercy. Indeed, You are the Bestower.",source:"Quran 3:8",context:"Recited by the deeply knowledgeable who fear going astray after receiving guidance. A dua for steadfastness in faith."},
+  {id:2,type:"Rabbana",category:"Forgiveness",arabic_text:"رَبَّنَا إِنَّنَا آمَنَّا فَاغْفِرْ لَنَا ذُنُوبَنَا وَقِنَا عَذَابَ النَّارِ",transliteration:"Rabbanā innanā āmannā faghfir lanā dhunūbanā wa qinā 'adhāban-nār.",english_translation:"Our Lord, indeed we have believed, so forgive us our sins and protect us from the punishment of the Fire.",source:"Quran 3:16",context:"The supplication of sincere believers who combine faith with seeking forgiveness. Perfect after salah."},
+  {id:3,type:"Rabbana",category:"Guidance",arabic_text:"رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",transliteration:"Rabbanā ātinā fid-dunyā ḥasanatan wa fil-ākhirati ḥasanatan wa qinā 'adhāban-nār.",english_translation:"Our Lord, give us good in this world and good in the Hereafter, and protect us from the punishment of the Fire.",source:"Quran 2:201",context:"The Prophet ﷺ said this was the most comprehensive dua one can make. Recited abundantly between the two pillars at Hajj."},
+  {id:4,type:"Rabbana",category:"Forgiveness",arabic_text:"رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ",transliteration:"Rabbanā ẓalamnā anfusanā wa-in lam taghfir lanā wa tarḥamnā lanakūnanna minal-khāsirīn.",english_translation:"Our Lord, we have wronged ourselves, and if You do not forgive us and have mercy on us, we will surely be among the losers.",source:"Quran 7:23",context:"The supplication of Adam and Eve (peace be upon them) after their mistake in Paradise. A model of sincere, humble repentance."},
+  {id:5,type:"Rabbana",category:"Patience",arabic_text:"رَبَّنَا أَفْرِغْ عَلَيْنَا صَبْرًا وَثَبِّتْ أَقْدَامَنَا وَانصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ",transliteration:"Rabbanā afrigh 'alaynā ṣabran wa thabbit aqdāmanā wanṣurnā 'alal-qawmil-kāfirīn.",english_translation:"Our Lord, pour upon us patience and plant firmly our feet and give us victory over the disbelieving people.",source:"Quran 2:250",context:"Said by the believers with Prophet Dawud (David) before facing Goliath's army. Recited for strength before any great challenge."},
+  {id:6,type:"Rabbana",category:"Family",arabic_text:"رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ وَاجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا",transliteration:"Rabbanā hab lanā min azwājinā wa dhurriyyātinā qurrata a'yunin waj'alnā lil-muttaqīna imāmā.",english_translation:"Our Lord, grant us from among our wives and offspring comfort to our eyes and make us an example for the righteous.",source:"Quran 25:74",context:"The dua of the 'servants of the Most Merciful' in Surah Al-Furqan. Recited for righteous, God-fearing children and spouses."},
+  {id:7,type:"Rabbana",category:"Forgiveness",arabic_text:"رَبَّنَا اغْفِرْ لِي وَلِوَالِدَيَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ الْحِسَابُ",transliteration:"Rabbanāghfir lī wa liwālidayya wa lil-mu'minīna yawma yaqūmul-ḥisāb.",english_translation:"Our Lord, forgive me and my parents and the believers on the Day when the account is established.",source:"Quran 14:41",context:"The dua of Prophet Ibrahim (Abraham) ﷺ. Recited for forgiveness for oneself, parents, and all believers."},
+  {id:8,type:"Rabbana",category:"Guidance",arabic_text:"رَبَّنَا مَا خَلَقْتَ هَٰذَا بَاطِلًا سُبْحَانَكَ فَقِنَا عَذَابَ النَّارِ",transliteration:"Rabbanā mā khalaqta hādhā bāṭilan subḥānaka faqinā 'adhāban-nār.",english_translation:"Our Lord, You did not create this in vain; exalted are You above that. So protect us from the punishment of the Fire.",source:"Quran 3:191",context:"The dua of those who remember Allah while standing, sitting, and on their sides, reflecting on creation. Recited during moments of deep contemplation."},
+  {id:9,type:"Rabbana",category:"Ease & Success",arabic_text:"رَبَّنَا آتِنَا مِن لَّدُنكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا",transliteration:"Rabbanā ātinā mil-ladunka raḥmatan wa hayyi' lanā min amrinā rashadā.",english_translation:"Our Lord, grant us from Yourself mercy and prepare for us from our affair right guidance.",source:"Quran 18:10",context:"The supplication of the People of the Cave (Ashab al-Kahf) before they slept seeking Allah's protection. Recited when seeking divine guidance in decisions."},
+  {id:10,type:"Rabbana",category:"Protection",arabic_text:"رَبَّنَا لَا تَجْعَلْنَا مَعَ الْقَوْمِ الظَّالِمِينَ",transliteration:"Rabbanā lā taj'alnā ma'al-qawmiẓ-ẓālimīn.",english_translation:"Our Lord, do not place us together with the wrongdoing people.",source:"Quran 7:47",context:"A supplication against being associated with oppressors and wrongdoers on the Day of Judgment. Recited for protection from unjust companionship."},
+  {id:11,type:"Rabbana",category:"Forgiveness",arabic_text:"رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ",transliteration:"Rabbanāghfir lanā wa li-ikhwāninalladhīna sabaqūnā bil-īmān.",english_translation:"Our Lord, forgive us and our brothers who preceded us in faith.",source:"Quran 59:10",context:"The dua of later believers for their believing brothers who came before them. Recited to foster brotherhood and intercession across generations."},
+  {id:12,type:"Rabbana",category:"Patience",arabic_text:"رَبَّنَا لَا تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا",transliteration:"Rabbanā lā tu'ākhidhnā in nasīnā aw akhṭa'nā.",english_translation:"Our Lord, do not impose blame upon us if we have forgotten or erred.",source:"Quran 2:286",context:"From the closing verses of Surah Al-Baqarah, said to be so noble that Allah replied 'I have done so' upon each phrase. Recited for relief from unintentional mistakes."},
+  {id:13,type:"Rabbana",category:"Patience",arabic_text:"رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِن قَبْلِنَا",transliteration:"Rabbanā wa lā taḥmil 'alaynā iṣran kamā ḥamaltahu 'alalladhīna min qablinā.",english_translation:"Our Lord, do not burden us as You burdened those before us.",source:"Quran 2:286",context:"Continuation of the closing dua of Surah Al-Baqarah. A supplication for lightening hardship and not being held to the same strict standards as past nations."},
+  {id:14,type:"Rabbana",category:"Protection",arabic_text:"رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ ۖ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا",transliteration:"Rabbanā wa lā tuḥammilnā mā lā ṭāqata lanā bih, wa'fu 'annā waghfir lanā warḥamnā.",english_translation:"Our Lord, do not burden us with that which we have no ability to bear. Pardon us, forgive us, and have mercy upon us.",source:"Quran 2:286",context:"The final plea from the last verses of Al-Baqarah. Recited in times of overwhelming difficulty asking for pardon, forgiveness, and mercy together."},
+  {id:15,type:"Rabbana",category:"Guidance",arabic_text:"رَبَّنَا لَا تَجْعَلْنَا فِتْنَةً لِّلْقَوْمِ الظَّالِمِينَ وَنَجِّنَا بِرَحْمَتِكَ مِنَ الْقَوْمِ الْكَافِرِينَ",transliteration:"Rabbanā lā taj'alnā fitnatal-lil-qawmiẓ-ẓālimīn wa najjinā biraḥmatika minal-qawmil-kāfirīn.",english_translation:"Our Lord, do not make us a trial for the wrongdoing people, and save us by Your mercy from the disbelieving people.",source:"Quran 10:85–86",context:"The supplication of Prophet Musa's (Moses') followers when facing Pharaoh's tyranny. Recited when living among oppressive environments."},
+  {id:16,type:"Rabbana",category:"Family",arabic_text:"رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِن ذُرِّيَّتِي ۚ رَبَّنَا وَتَقَبَّلْ دُعَاءِ",transliteration:"Rabbij'alnī muqīmaṣ-ṣalāti wa min dhurriyyatī, rabbanā wa taqabbal du'ā'.",english_translation:"My Lord, make me an establisher of prayer, and from my descendants. Our Lord, and accept my supplication.",source:"Quran 14:40",context:"Prophet Ibrahim's ﷺ dua for himself and his family to maintain prayer. Recited by parents seeking righteous, prayer-observing children."},
+  {id:17,type:"Rabbana",category:"Family",arabic_text:"رَبِّ هَبْ لِي مِنَ الصَّالِحِينَ",transliteration:"Rabbi hab lī minaṣ-ṣāliḥīn.",english_translation:"My Lord, grant me from among the righteous.",source:"Quran 37:100",context:"The prayer of Prophet Ibrahim ﷺ when longing for a righteous son, which Allah answered with the birth of Ismail (Ishmael). Recited by those longing for children."},
+  {id:18,type:"Rabbana",category:"Health",arabic_text:"رَبِّ أَنِّي مَسَّنِيَ الضُّرُّ وَأَنتَ أَرْحَمُ الرَّاحِمِينَ",transliteration:"Rabbi annī massaniyadh-dhurru wa anta arḥamur-rāḥimīn.",english_translation:"My Lord, indeed adversity has touched me, and You are the Most Merciful of the merciful.",source:"Quran 21:83",context:"The prayer of Prophet Ayyub (Job) ﷺ during his severe illness. Allah immediately responded and restored his health. Recited when afflicted with illness or suffering."},
+  {id:19,type:"Rabbana",category:"Ease & Success",arabic_text:"رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي وَاحْلُلْ عُقْدَةً مِّن لِّسَانِي يَفْقَهُوا قَوْلِي",transliteration:"Rabbish-raḥ lī ṣadrī wa yassir lī amrī waḥlul 'uqdatan min lisānī yafqahū qawlī.",english_translation:"My Lord, expand for me my breast and ease for me my task and untie the knot from my tongue that they may understand my speech.",source:"Quran 20:25–28",context:"The prayer of Prophet Musa ﷺ before confronting Pharaoh. Recited before speeches, exams, presentations, or any situation requiring clear communication."},
+  {id:20,type:"Rabbana",category:"Forgiveness",arabic_text:"رَبِّ إِنِّي ظَلَمْتُ نَفْسِي فَاغْفِرْ لِي",transliteration:"Rabbi innī ẓalamtu nafsī faghfir lī.",english_translation:"My Lord, indeed I have wronged myself, so forgive me.",source:"Quran 28:16",context:"The immediate repentance of Prophet Musa ﷺ after accidentally causing a man's death. A model of instant, unhesitating repentance for sins."},
+  {id:21,type:"Rabbana",category:"Guidance",arabic_text:"رَبِّ أَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطِينِ وَأَعُوذُ بِكَ رَبِّ أَن يَحْضُرُونِ",transliteration:"Rabbi a'ūdhu bika min hamazātish-shayāṭīn, wa a'ūdhu bika rabbi an yaḥḍurūn.",english_translation:"My Lord, I seek refuge in You from the incitements of the devils, and I seek refuge in You, my Lord, lest they be present with me.",source:"Quran 23:97–98",context:"A Quranic supplication for seeking refuge from Satanic whispers and evil presence. Recited when feeling spiritually distressed or tempted."},
+  {id:22,type:"Rabbana",category:"Patience",arabic_text:"حَسْبِيَ اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ ۖ عَلَيْهِ تَوَكَّلْتُ ۖ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ",transliteration:"Ḥasbiyallāhu lā ilāha illā huw, 'alayhi tawakkaltu wa huwa rabbul-'arshil-'aẓīm.",english_translation:"Sufficient for me is Allah; there is no deity except Him. On Him I have relied, and He is the Lord of the Great Throne.",source:"Quran 9:129",context:"Recited by the Prophet ﷺ when people forsook him. Taught as the dua for times when all support has been withdrawn and only Allah remains."},
+  {id:23,type:"Rabbana",category:"Protection",arabic_text:"رَّبِّ أَعُوذُ بِكَ مِنَ الشَّيَاطِينِ",transliteration:"Rabbi a'ūdhu bika minash-shayāṭīn.",english_translation:"My Lord, I seek refuge in You from the devils.",source:"Quran 23:97",context:"A concise protection supplication from Surah Al-Mu'minun. Recited when entering any unfamiliar place or feeling spiritually vulnerable."},
+  {id:24,type:"Rabbana",category:"Ease & Success",arabic_text:"رَبِّ زِدْنِي عِلْمًا",transliteration:"Rabbi zidnī 'ilmā.",english_translation:"My Lord, increase me in knowledge.",source:"Quran 20:114",context:"The only dua where Allah directly commands the Prophet ﷺ to ask for increase — specifically of knowledge. Recited before studying, reading, or seeking any form of learning."},
+  {id:25,type:"Rabbana",category:"Forgiveness",arabic_text:"لَا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ",transliteration:"Lā ilāha illā anta subḥānaka innī kuntu minaẓ-ẓālimīn.",english_translation:"There is no deity except You; exalted are You. Indeed, I have been of the wrongdoers.",source:"Quran 21:87",context:"The prayer of Prophet Yunus (Jonah) ﷺ from the belly of the whale. The Prophet ﷺ said no Muslim recites it in distress except that Allah relieves him."},
+  {id:26,type:"Rabbana",category:"Family",arabic_text:"رَبِّ لَا تَذَرْنِي فَرْدًا وَأَنتَ خَيْرُ الْوَارِثِينَ",transliteration:"Rabbi lā tadharni fardan wa anta khayrul-wārithīn.",english_translation:"My Lord, do not leave me alone, and You are the best of inheritors.",source:"Quran 21:89",context:"The supplication of Prophet Zakariya (Zechariah) ﷺ longing for an heir to continue prophethood. Allah answered with the birth of Yahya (John the Baptist)."},
+  {id:27,type:"Rabbana",category:"Gratitude",arabic_text:"رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَىٰ وَالِدَيَّ",transliteration:"Rabbi awzi'nī an ashkura ni'matakal-latī an'amta 'alayya wa 'alā wālidayya.",english_translation:"My Lord, enable me to be grateful for Your favour which You have bestowed upon me and upon my parents.",source:"Quran 27:19",context:"Said by Prophet Sulayman (Solomon) ﷺ upon hearing an ant speak. A dua for the ability to be grateful — which itself is a gift."},
+  {id:28,type:"Rabbana",category:"Guidance",arabic_text:"رَبَّنَا وَسِعْتَ كُلَّ شَيْءٍ رَّحْمَةً وَعِلْمًا فَاغْفِرْ لِلَّذِينَ تَابُوا وَاتَّبَعُوا سَبِيلَكَ",transliteration:"Rabbanā wasi'ta kulla shay'in raḥmatan wa 'ilman faghfir lilladhīna tābū wattaba'ū sabīlak.",english_translation:"Our Lord, You have encompassed all things in mercy and knowledge, so forgive those who have repented and followed Your way.",source:"Quran 40:7",context:"The supplication of the angels carrying the Throne of Allah on behalf of repentant believers. A powerful intercessory supplication for forgiveness."},
+  {id:29,type:"Rabbana",category:"Protection",arabic_text:"رَبَّنَا اصْرِفْ عَنَّا عَذَابَ جَهَنَّمَ ۖ إِنَّ عَذَابَهَا كَانَ غَرَامًا",transliteration:"Rabbanāṣrif 'annā 'adhāba jahannama, inna 'adhābahā kāna gharāmā.",english_translation:"Our Lord, avert from us the punishment of Hell. Indeed, its punishment is ever adhering.",source:"Quran 25:65",context:"Said by the righteous servants of Ar-Rahman who spend their nights in humble prostration and supplication to their Lord."},
+  {id:30,type:"Rabbana",category:"Guidance",arabic_text:"رَبَّنَا هَبْ لَنَا مِنْ أَزْوَاجِنَا وَذُرِّيَّاتِنَا قُرَّةَ أَعْيُنٍ",transliteration:"Rabbanā hab lanā min azwājinā wa dhurriyyātinā qurrata a'yun.",english_translation:"Our Lord, grant us from among our wives and offspring comfort to our eyes.",source:"Quran 25:74",context:"Part of the prayer of 'Ibaad-ur-Rahman' (servants of the Most Gracious). Recited for righteous spouses and children who bring joy to the eyes and heart."},
+  {id:31,type:"Rabbana",category:"Ease & Success",arabic_text:"رَبَّنَا آتِنَا مِن لَّدُنكَ رَحْمَةً وَهَيِّئْ لَنَا مِنْ أَمْرِنَا رَشَدًا",transliteration:"Rabbanā ātinā mil-ladunka raḥmatan wa hayyi' lanā min amrinā rashadā.",english_translation:"Our Lord, grant us mercy from Yourself and prepare for us right guidance in our matter.",source:"Quran 18:10",context:"Said by the pious youth of the Cave when fleeing religious persecution. Recited when one needs both mercy and divine direction."},
+  {id:32,type:"Rabbana",category:"Gratitude",arabic_text:"رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ",transliteration:"Rabbi awzi'nī an ashkura ni'matakal-latī an'amta 'alayya wa an a'mala ṣāliḥan tarḍāh.",english_translation:"My Lord, enable me to be grateful for Your favour which You have bestowed upon me and to do righteousness with which You will be pleased.",source:"Quran 46:15",context:"A comprehensive prayer for gratitude and righteousness, mentioned as the prayer of one who reaches the age of 40. Recited to seek both gratitude and the ability to act on it."},
+  {id:33,type:"Rabbana",category:"Forgiveness",arabic_text:"رَّبِّ اغْفِرْ وَارْحَمْ وَأَنتَ خَيْرُ الرَّاحِمِينَ",transliteration:"Rabbighfir warḥam wa anta khayru-rāḥimīn.",english_translation:"My Lord, forgive and have mercy, and You are the best of the merciful.",source:"Quran 23:118",context:"A brief but comprehensive plea combining forgiveness and mercy. Easy to memorise and recited constantly as a form of continuous istighfar."},
+  {id:34,type:"Rabbana",category:"Patience",arabic_text:"رَبَّنَا اغْفِرْ لَنَا ذُنُوبَنَا وَإِسْرَافَنَا فِي أَمْرِنَا وَثَبِّتْ أَقْدَامَنَا",transliteration:"Rabbanāghfir lanā dhunūbanā wa isrāfanā fī amrinā wa thabbit aqdāmanā.",english_translation:"Our Lord, forgive us our sins and the excess we committed in our affairs and plant firmly our feet.",source:"Quran 3:147",context:"The supplication of those who fight in Allah's cause alongside the Prophets. Recited for steadfastness during any spiritual or physical trial."},
+  {id:35,type:"Rabbana",category:"Guidance",arabic_text:"رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا",transliteration:"Rabbanā lā tuzigh qulūbanā ba'da idh hadaytanā.",english_translation:"Our Lord, do not let our hearts deviate after You have guided us.",source:"Quran 3:8",context:"A focused extract of the guidance-steadfastness dua. Recited daily to protect one's heart from spiritual deviation and doubt."},
+  {id:36,type:"Rabbana",category:"Protection",arabic_text:"رَبَّنَا آمَنَّا فَاكْتُبْنَا مَعَ الشَّاهِدِينَ",transliteration:"Rabbanā āmannā faktubna ma'ash-shāhidīn.",english_translation:"Our Lord, we have believed, so register us among the witnesses.",source:"Quran 5:83",context:"Said by the Christian scholars of Abyssinia when they heard the Quran recited before Negus. Recited to affirm and record one's faith."},
+  {id:37,type:"Rabbana",category:"Family",arabic_text:"رَبِّ إِنِّي وَهَنَ الْعَظْمُ مِنِّي وَاشْتَعَلَ الرَّأْسُ شَيْبًا وَلَمْ أَكُن بِدُعَائِكَ رَبِّ شَقِيًّا",transliteration:"Rabbi innī wahanalˈ'aẓmu minnī wash-ta'alar-ra'su shayban wa lam akun bidu'ā'ika rabbi shaqiyyā.",english_translation:"My Lord, indeed my bones have weakened and my head has filled with white, and never have I been in my supplication to You, my Lord, unhappy.",source:"Quran 19:4",context:"Prophet Zakariya's ﷺ intimate opening to his dua for a child in old age. A model for pouring out one's vulnerability before Allah in private prayer."},
+  {id:38,type:"Rabbana",category:"Ease & Success",arabic_text:"رَبَّنَا وَاجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَا أُمَّةً مُّسْلِمَةً لَّكَ",transliteration:"Rabbanā waj'alnā muslimaini laka wa min dhurriyyatinā ummatan muslimatan lak.",english_translation:"Our Lord, make us Muslims in submission to You, and from our descendants a Muslim nation submitting to You.",source:"Quran 2:128",context:"The prayer of Prophet Ibrahim and his son Ismail ﷺ while constructing the Kaaba. A foundational dua for Muslim identity and legacy."},
+  {id:39,type:"Rabbana",category:"Guidance",arabic_text:"رَبَّنَا أَتْمِمْ لَنَا نُورَنَا وَاغْفِرْ لَنَا ۖ إِنَّكَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ",transliteration:"Rabbanā atmim lanā nūranā waghfir lanā innaka 'alā kulli shay'in qadīr.",english_translation:"Our Lord, perfect for us our light and forgive us. Indeed, You are over all things competent.",source:"Quran 66:8",context:"The dua of the believers on the Day of Judgment asking Allah to complete their light across the Sirat bridge. Recited to seek divine light in this life and the next."},
+  {id:40,type:"Rabbana",category:"Protection",arabic_text:"رَبَّنَا لَا تَجْعَلْنَا فِتْنَةً لِّلَّذِينَ كَفَرُوا",transliteration:"Rabbanā lā taj'alnā fitnatal-lilladhīna kafarū.",english_translation:"Our Lord, do not make us a trial for those who disbelieve.",source:"Quran 60:5",context:"Part of Prophet Ibrahim's ﷺ dua as a model for Muslims to not become a source of doubt or ammunition for those who reject faith."},
+
+  /* ══ PROPHETIC ADHKAR ══ */
+  {id:41,type:"Prophetic",category:"General",arabic_text:"اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ",transliteration:"Allāhumma anta rabbī lā ilāha illā anta khalaqtanī wa ana 'abduka wa ana 'alā 'ahdika wa wa'dika mastaṭa't.",english_translation:"O Allah, You are my Lord. There is no god but You. You created me and I am Your servant, and I abide by Your covenant and promise as best I can.",source:"Sahih al-Bukhari 6306",context:"The Sayyid al-Istighfar — the 'Master of Seeking Forgiveness'. The Prophet ﷺ said whoever says it with certainty in the morning or evening and dies that day will be among the people of Paradise."},
+  {id:42,type:"Prophetic",category:"Protection",arabic_text:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ وَأَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ",transliteration:"Allāhumma innī a'ūdhu bika minal-hammi wal-ḥazani wa a'ūdhu bika minal-'ajzi wal-kasal.",english_translation:"O Allah, I seek refuge in You from anxiety and sorrow, and I seek refuge in You from incapacity and laziness.",source:"Sahih al-Bukhari 2893",context:"One of the comprehensive duas the Prophet ﷺ regularly made, seeking protection from eight destructive qualities including worry, grief, cowardice, and debt."},
+  {id:43,type:"Prophetic",category:"Ease & Success",arabic_text:"اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا وَأَنْتَ تَجْعَلُ الْحَزْنَ إِذَا شِئْتَ سَهْلًا",transliteration:"Allāhumma lā sahla illā mā ja'altahu sahlā wa anta taj'alul-ḥazna idhā shi'ta sahlā.",english_translation:"O Allah, there is no ease except in what You have made easy, and You make the difficult easy when You will.",source:"Ibn Hibban (Sahih)",context:"Recited when facing difficulty or a seemingly impossible task. A reminder that all ease comes from Allah alone, and nothing is too hard for Him to soften."},
+  {id:44,type:"Prophetic",category:"Guidance",arabic_text:"اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى",transliteration:"Allāhumma innī as'alukal-hudā wat-tuqā wal-'afāfa wal-ghinā.",english_translation:"O Allah, I ask You for guidance, piety, chastity and self-sufficiency.",source:"Sahih Muslim 2721",context:"A concise but complete dua the Prophet ﷺ taught regularly. Recited for four things that, together, constitute a complete and blessed life."},
+  {id:45,type:"Prophetic",category:"Forgiveness",arabic_text:"سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ",transliteration:"Subḥānakallāhumma wa biḥamdika ashhadu an lā ilāha illā anta astaghfiruka wa atūbu ilayk.",english_translation:"Glory be to You, O Allah, and praise be to You. I bear witness that there is no god but You. I seek Your forgiveness and repent to You.",source:"Sunan at-Tirmidhi 3433",context:"Kaffaratul-Majlis — the expiation of a gathering. The Prophet ﷺ taught that this supplication erases any sins committed in a sitting. Recited at the end of every gathering."},
+  {id:46,type:"Prophetic",category:"Protection",arabic_text:"بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",transliteration:"Bismillāhilladhī lā yaḍurru ma'asmihi shay'un fil-arḍi wa lā fis-samā'i wa huwas-samī'ul-'alīm.",english_translation:"In the name of Allah, with Whose name nothing on earth or in heaven can cause harm, and He is the All-Hearing, the All-Knowing.",source:"Sunan Abi Dawud 5088",context:"The Prophet ﷺ said: 'Whoever says this three times in the morning will not be afflicted by any sudden affliction until evening.' A powerful morning and evening protection."},
+  {id:47,type:"Prophetic",category:"Health",arabic_text:"اللَّهُمَّ عَافِنِي فِي بَدَنِي اللَّهُمَّ عَافِنِي فِي سَمْعِي اللَّهُمَّ عَافِنِي فِي بَصَرِي",transliteration:"Allāhumma 'āfinī fī badanī, Allāhumma 'āfinī fī sam'ī, Allāhumma 'āfinī fī baṣarī.",english_translation:"O Allah, grant me health in my body. O Allah, grant me health in my hearing. O Allah, grant me health in my sight.",source:"Sunan Abi Dawud 5090",context:"Abu Bakr As-Siddiq رضي الله عنه narrated that the Prophet ﷺ taught him to say this every morning and evening for physical and sensory wellbeing."},
+  {id:48,type:"Prophetic",category:"Patience",arabic_text:"إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ اللَّهُمَّ أْجُرْنِي فِي مُصِيبَتِي وَأَخْلِفْ لِي خَيْرًا مِنْهَا",transliteration:"Innā lillāhi wa innā ilayhi rāji'ūn. Allāhumma ajurnī fī muṣībatī wa akhlif lī khayran minhā.",english_translation:"Indeed we belong to Allah, and indeed to Him we shall return. O Allah, reward me in my affliction and replace it for me with something better.",source:"Sahih Muslim 918",context:"Umm Salamah رضي الله عنها said she heard this from the Prophet ﷺ after her husband died. She said she recited it and Allah replaced him with the best — the Prophet ﷺ himself."},
+  {id:49,type:"Prophetic",category:"General",arabic_text:"اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ",transliteration:"Allāhumma innī as'alukal-'āfiyata fid-dunyā wal-ākhirah.",english_translation:"O Allah, I ask You for well-being in this world and in the Hereafter.",source:"Sunan Ibn Majah 3851",context:"Al-Abbas رضي الله عنه asked the Prophet ﷺ for the best thing to ask for, and the Prophet replied: 'Ask Allah for al-'afiyah (well-being).' One of the most comprehensive requests."},
+  {id:50,type:"Prophetic",category:"Guidance",arabic_text:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الشِّقَاقِ وَالنِّفَاقِ وَسُوءِ الْأَخْلَاقِ",transliteration:"Allāhumma innī a'ūdhu bika minash-shiqāqi wan-nifāqi wa sū'il-akhlāq.",english_translation:"O Allah, I seek refuge in You from discord, hypocrisy and bad character.",source:"Sunan Abi Dawud 1546",context:"Recited for protection from internal spiritual diseases. The Prophet ﷺ emphasised the danger of hypocrisy and bad character above outward sins."},
+  {id:51,type:"Prophetic",category:"Forgiveness",arabic_text:"أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ",transliteration:"Astaghfirullāhal-'aẓīmalladhī lā ilāha illā huwal-ḥayyul-qayyūmu wa atūbu ilayh.",english_translation:"I seek forgiveness from Allah the Magnificent, besides whom there is no god, the Ever-Living, the Sustainer of all, and I repent to Him.",source:"Sunan at-Tirmidhi 3577",context:"The Prophet ﷺ said: 'Whoever says this, his sins will be forgiven even if he has fled from battle.' One of the most potent forms of seeking forgiveness."},
+  {id:52,type:"Prophetic",category:"Family",arabic_text:"اللَّهُمَّ اغْفِرْ لِي وَلِوَالِدَيَّ وَارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",transliteration:"Allāhummaghfir lī wa liwālidayya warḥamhumā kamā rabbayānī ṣaghīrā.",english_translation:"O Allah, forgive me and my parents and have mercy on them as they raised me when I was young.",source:"Derived from Quran 17:24 / Common Prophetic tradition",context:"Inspired by the Quranic command to lower the wing of humility for parents. Recited as a gift to parents — living or deceased — that continues to benefit them after death."},
+  {id:53,type:"Prophetic",category:"Protection",arabic_text:"أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",transliteration:"A'ūdhu bikalimātillāhit-tāmmāti min sharri mā khalaq.",english_translation:"I seek refuge in the perfect words of Allah from the evil of what He has created.",source:"Sahih Muslim 2708",context:"Recited three times in the evening. The Prophet ﷺ said it protects from all harm until morning. Recited when entering an unfamiliar area or at night before sleep."},
+  {id:54,type:"Prophetic",category:"Ease & Success",arabic_text:"اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا طَيِّبًا وَعَمَلًا مُتَقَبَّلًا",transliteration:"Allāhumma innī as'aluka 'ilman nāfi'an wa rizqan ṭayyiban wa 'amalan mutaqabbala.",english_translation:"O Allah, I ask You for beneficial knowledge, pure sustenance, and accepted deeds.",source:"Sunan Ibn Majah 925",context:"Recited after Fajr salah. Combines the three most important requests: useful knowledge, wholesome provision, and deeds accepted by Allah."},
+  {id:55,type:"Prophetic",category:"Gratitude",arabic_text:"اللَّهُمَّ مَا أَصْبَحَ بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ",transliteration:"Allāhumma mā aṣbaḥa bī min ni'matin aw bi-aḥadin min khalqika faminka waḥdaka.",english_translation:"O Allah, whatever blessing I or any of Your creation have received in this morning is from You alone.",source:"Sunan Abi Dawud 5073",context:"The Prophet ﷺ said: 'Whoever says this in the morning has given thanks for that day.' Recited every morning as an acknowledgment that all blessings come from Allah alone."},
+  {id:56,type:"Prophetic",category:"Health",arabic_text:"اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَأْسَ اشْفِ أَنْتَ الشَّافِي لَا شِفَاءَ إِلَّا شِفَاؤُكَ",transliteration:"Allāhumma rabban-nāsi adh-hibil-ba'sa ishfi antash-shāfī lā shifā'a illā shifā'uka.",english_translation:"O Allah, Lord of mankind, remove the affliction. Cure, for You are the Healer. There is no cure except Your cure.",source:"Sahih al-Bukhari 5743",context:"The ruqyah the Prophet ﷺ made when a person was ill. He would recite it and blow over the sick person. Recited when visiting the sick or when sick yourself."},
+  {id:57,type:"Prophetic",category:"Patience",arabic_text:"اللَّهُمَّ إِنِّي عَبْدُكَ ابْنُ عَبْدِكَ ابْنُ أَمَتِكَ نَاصِيَتِي بِيَدِكَ",transliteration:"Allāhumma innī 'abduka ibnu 'abdika ibnu amatika nāṣiyatī biyadika.",english_translation:"O Allah, I am Your servant, son of Your servant, son of Your maidservant. My forelock is in Your hand.",source:"Musnad Ahmad 3704",context:"The opening of the famous Dua for Depression taught by the Prophet ﷺ. Recited in full during times of grief, sadness, or anxiety, it is described as removing worry and replacing it with joy."},
+  {id:58,type:"Prophetic",category:"Guidance",arabic_text:"اللَّهُمَّ أَرِنِي الْحَقَّ حَقًّا وَارْزُقْنِي اتِّبَاعَهُ وَأَرِنِي الْبَاطِلَ بَاطِلًا وَارْزُقْنِي اجْتِنَابَهُ",transliteration:"Allāhumma arinilˈḥaqqa ḥaqqan warzuqnit-tibā'ahu wa arinilˈbāṭila bāṭilan warzuqnij-tinābah.",english_translation:"O Allah, show me the truth as truth and grant me the ability to follow it, and show me falsehood as falsehood and grant me the ability to avoid it.",source:"Musnad Ahmad / Authenticated",context:"A supreme dua for clarity and conviction. Recited when confused between right and wrong, or when living in an environment of moral ambiguity."},
+  {id:59,type:"Prophetic",category:"General",arabic_text:"رَضِيتُ بِاللَّهِ رَبًّا وَبِالْإِسْلَامِ دِينًا وَبِمُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ نَبِيًّا",transliteration:"Raḍītu billāhi rabban wa bil-Islāmi dīnan wa bi-Muḥammadin ṣallallāhu 'alayhi wa sallama nabiyyan.",english_translation:"I am pleased with Allah as my Lord, with Islam as my religion, and with Muhammad ﷺ as my Prophet.",source:"Sunan Abi Dawud 1529",context:"Recited three times every morning and evening. The Prophet ﷺ said: 'Whoever says this, it is a right upon Allah to please him on the Day of Judgment.'"},
+  {id:60,type:"Prophetic",category:"Protection",arabic_text:"اللَّهُمَّ إِنِّي أَسْأَلُكَ الْجَنَّةَ وَأَعُوذُ بِكَ مِنَ النَّارِ",transliteration:"Allāhumma innī as'alukal-jannata wa a'ūdhu bika minan-nār.",english_translation:"O Allah, I ask You for Paradise and I seek refuge in You from the Fire.",source:"Sunan Abi Dawud 792",context:"The Prophet ﷺ said that when a servant asks Allah for Paradise three times, Paradise says: 'O Allah, admit him into Paradise'; and when they seek refuge from the Fire three times, the Fire says: 'O Allah, protect him from me.'"}
+];
+
+const CAT_COLOUR_MAP = {
+  "Forgiveness":"cat-forgiveness","Guidance":"cat-guidance","Family":"cat-family",
+  "Ease & Success":"cat-ease","Patience":"cat-patience","Protection":"cat-protection",
+  "Gratitude":"cat-gratitude","Health":"cat-health","General":"cat-general"
+};
+
+let currentDuaIdx = 0;
+let filteredDuas = [...DUAS_DATA];
+let activeDuaCat = 'all';
+
+function getCatClass(cat){ return CAT_COLOUR_MAP[cat] || 'cat-general'; }
+
+function renderDuasGrid(arr){
+  const grid = document.getElementById('duasGrid');
+  const countEl = document.getElementById('duasCount');
+  grid.innerHTML = '';
+  const total = arr.length;
+  countEl.textContent = `Showing ${total} dua${total===1?'':'s'}`;
+  if(!total){
+    grid.innerHTML = '<div class="duas-empty">لا نتائج — No duas found matching your search.</div>';
+    return;
+  }
+  arr.forEach((d, idx) => {
+    const card = document.createElement('div');
+    card.className = 'dua-card';
+    card.innerHTML = `
+      <div class="dua-card-top">
+        <span class="dua-cat-badge ${getCatClass(d.category)}">${d.category}</span>
+        <span class="dua-type-tag">${d.type === 'Rabbana' ? '📖 Quranic' : '🌿 Prophetic'}</span>
+      </div>
+      <div class="dua-arabic">${d.arabic_text}</div>
+      <div class="dua-trans">${d.transliteration}</div>
+      <div class="dua-meaning">${d.english_translation}</div>
+      <div class="dua-source-row">
+        <span class="dua-source">${d.source}</span>
+        <span class="dua-expand-hint">Tap to expand ↗</span>
+      </div>
+    `;
+    card.addEventListener('click', () => openDuaModal(idx, arr));
+    grid.appendChild(card);
+  });
+}
+
+function openDuaModal(idx, arr){
+  arr = arr || filteredDuas;
+  currentDuaIdx = idx;
+  const d = arr[idx];
+  stopDuaAudio();
+
+  const catBadge = document.getElementById('dmCatBadge');
+  catBadge.textContent = d.category;
+  catBadge.className = `dua-cat-badge ${getCatClass(d.category)}`;
+  document.getElementById('dmTypeBadge').textContent = d.type === 'Rabbana' ? '📖 Quranic Dua' : '🌿 Prophetic Adhkar';
+  document.getElementById('dmArabic').textContent = d.arabic_text;
+  document.getElementById('dmTrans').textContent = d.transliteration;
+  document.getElementById('dmTranslation').textContent = d.english_translation;
+  document.getElementById('dmSourceLabel').textContent = d.type === 'Rabbana' ? 'Quran' : 'Hadith';
+  document.getElementById('dmSourceText').textContent = d.source;
+  document.getElementById('dmContext').textContent = d.context;
+  document.getElementById('dmCounter').textContent = `${idx + 1} of ${arr.length}`;
+  document.getElementById('dmAudioIcon').textContent = '▶';
+  document.getElementById('dmAudioLabel').textContent = 'Listen to Pronunciation';
+  document.getElementById('dmAudioBtn').classList.remove('playing');
+  document.getElementById('dmPrev').disabled = idx === 0;
+  document.getElementById('dmNext').disabled = idx === arr.length - 1;
+  document.getElementById('duaOverlay').dataset.arr = JSON.stringify(arr.map(x=>x.id));
+  document.getElementById('duaOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function navigateDua(dir){
+  const ids = JSON.parse(document.getElementById('duaOverlay').dataset.arr || '[]');
+  const arr = ids.length ? ids.map(id => DUAS_DATA.find(d=>d.id===id)) : filteredDuas;
+  const newIdx = currentDuaIdx + dir;
+  if(newIdx >= 0 && newIdx < arr.length) openDuaModal(newIdx, arr);
+}
+
+function toggleDuaAudio(){
+  const ids = JSON.parse(document.getElementById('duaOverlay').dataset.arr || '[]');
+  const arr = ids.length ? ids.map(id => DUAS_DATA.find(d=>d.id===id)) : filteredDuas;
+  const d = arr[currentDuaIdx];
+  if('speechSynthesis' in window){
+    if(!window.speechSynthesis.paused && window.speechSynthesis.speaking){ stopDuaAudio(); return; }
+    const utt = new SpeechSynthesisUtterance(d.arabic_text);
+    utt.lang = 'ar-SA'; utt.rate = 0.65; utt.pitch = 1;
+    const voices = window.speechSynthesis.getVoices();
+    const arVoice = voices.find(v => v.lang.startsWith('ar'));
+    if(arVoice) utt.voice = arVoice;
+    utt.onstart = () => {
+      document.getElementById('dmAudioIcon').textContent = '⏸';
+      document.getElementById('dmAudioLabel').textContent = 'Playing…';
+      document.getElementById('dmAudioBtn').classList.add('playing');
+    };
+    utt.onend = utt.onerror = () => {
+      document.getElementById('dmAudioIcon').textContent = '▶';
+      document.getElementById('dmAudioLabel').textContent = 'Listen to Pronunciation';
+      document.getElementById('dmAudioBtn').classList.remove('playing');
+    };
+    window.speechSynthesis.speak(utt);
+  }
+}
+function stopDuaAudio(){
+  if('speechSynthesis' in window) window.speechSynthesis.cancel();
+  const icon = document.getElementById('dmAudioIcon');
+  const lbl = document.getElementById('dmAudioLabel');
+  const btn = document.getElementById('dmAudioBtn');
+  if(icon) icon.textContent = '▶';
+  if(lbl) lbl.textContent = 'Listen to Pronunciation';
+  if(btn) btn.classList.remove('playing');
+}
+
+function closeDuaModal(e){ if(e.target===document.getElementById('duaOverlay')) closeDuaModalDirect(); }
+function closeDuaModalDirect(){ stopDuaAudio(); document.getElementById('duaOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+
+// Tabs
+document.getElementById('duasTabs').addEventListener('click', function(e){
+  const btn = e.target.closest('.duas-tab');
+  if(!btn) return;
+  document.querySelectorAll('.duas-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  activeDuaCat = btn.dataset.cat;
+  applyDuasFilter();
+});
+
+// Search
+document.getElementById('duasSearch').addEventListener('input', applyDuasFilter);
+
+function applyDuasFilter(){
+  const q = document.getElementById('duasSearch').value.trim().toLowerCase();
+  filteredDuas = DUAS_DATA.filter(d => {
+    const catMatch = activeDuaCat === 'all' || d.category === activeDuaCat;
+    const textMatch = !q || d.english_translation.toLowerCase().includes(q)
+      || d.category.toLowerCase().includes(q)
+      || d.transliteration.toLowerCase().includes(q)
+      || d.arabic_text.includes(q)
+      || d.context.toLowerCase().includes(q)
+      || d.type.toLowerCase().includes(q);
+    return catMatch && textMatch;
+  });
+  renderDuasGrid(filteredDuas);
+}
+
+document.addEventListener('keydown', e => {
+  if(document.getElementById('duaOverlay').classList.contains('active')){
+    if(e.key==='Escape') closeDuaModalDirect();
+    if(e.key==='ArrowRight') navigateDua(1);
+    if(e.key==='ArrowLeft') navigateDua(-1);
+  }
+});
+
+// ─── THEME TOGGLE ─────────────────────────────────────
+function toggleTheme(){
+  const html = document.documentElement;
+  const isLight = html.getAttribute('data-theme') === 'light';
+  if(isLight){
+    html.removeAttribute('data-theme');
+    document.getElementById('themeIcon').textContent = '☀️';
+    document.getElementById('themeLabel').textContent = 'Light Mode';
+    localStorage.setItem('quran-theme','dark');
+  } else {
+    html.setAttribute('data-theme','light');
+    document.getElementById('themeIcon').textContent = '🌙';
+    document.getElementById('themeLabel').textContent = 'Dark Mode';
+    localStorage.setItem('quran-theme','light');
+  }
+}
+// Restore saved theme on load
+(function(){
+  const saved = localStorage.getItem('quran-theme');
+  if(saved === 'light'){
+    document.documentElement.setAttribute('data-theme','light');
+    document.getElementById('themeIcon').textContent = '🌙';
+    document.getElementById('themeLabel').textContent = 'Dark Mode';
+  }
+})();
+
+// ─── INIT ─────────────────────────────────────────────
+renderPopular();
+renderSpecialities();
+renderNamesGrid(NAMES_99);
+renderDuasGrid(DUAS_DATA);
+// Pre-load speech voices
+if('speechSynthesis' in window) window.speechSynthesis.getVoices();
+</script>
+</body>
+</html>
